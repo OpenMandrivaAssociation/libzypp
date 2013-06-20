@@ -35,6 +35,7 @@ BuildRequires: pkgconfig(rpm)
 BuildRequires: cmake
 BuildRequires: pkgconfig(libcurl)
 BuildRequires: boost-devel
+BuildRequires: doxygen
 
 %description
 ZYpp is a Linux software management engine that powers products like
