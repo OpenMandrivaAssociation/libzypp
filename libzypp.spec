@@ -32,6 +32,7 @@ License: GPLv2+ with extra permission to link to OpenSSL
 Group: System/Libraries
 BuildRequires: solv-devel
 BuildRequires: pkgconfig(rpm)
+BuildRequires: cmake
 
 %description
 ZYpp is a Linux software management engine that powers products like
