@@ -33,6 +33,8 @@ Group: System/Libraries
 BuildRequires: solv-devel
 BuildRequires: pkgconfig(rpm)
 BuildRequires: cmake
+BuildRequires: pkgconfig(libcurl)
+BuildRequires: boost-devel
 
 %description
 ZYpp is a Linux software management engine that powers products like
