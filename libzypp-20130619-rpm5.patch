@@ -1,0 +1,68 @@
+--- libzypp-20130619/CMakeLists.txt.omv~	2013-06-19 20:04:39.388437510 +0200
++++ libzypp-20130619/CMakeLists.txt	2013-06-19 20:06:54.771744985 +0200
+@@ -81,6 +81,8 @@ ELSE ( NOT RPM_FOUND)
+   if ( RPM_SUSPECT_VERSION STREQUAL "5.x" )
+   	MESSAGE( STATUS "rpm found: enable rpm-4 compat interface." )
+   	ADD_DEFINITIONS(-D_RPM_5)
++	# link extra dependencies of librpm 5.x
++	SET(RPM_LIBRARY ${RPM_LIBRARY} -lrpmio -lrpmdb -lpthread)
+   elseif ( RPM_SUSPECT_VERSION STREQUAL "4.x" )
+ 	MESSAGE( STATUS "rpm found: use rpm-4.x interface." )
+ 	ADD_DEFINITIONS(-D_RPM_4_X)
+--- libzypp-20130619/zypp/target/rpm/BinHeader.h.omv~	2013-06-19 19:52:13.084767589 +0200
++++ libzypp-20130619/zypp/target/rpm/BinHeader.h	2013-06-19 19:52:24.060630372 +0200
+@@ -110,7 +110,7 @@ class BinHeader::intList : private base:
+ {
+   public:
+     intList()
+-      : _type( RPM_NULL_TYPE )
++      : _type( (rpmTagType)RPM_NULL_TYPE )
+     {}
+ 
+     bool empty() const
+--- libzypp-20130619/zypp/target/rpm/librpmDb.cc.omv~	2013-06-19 19:56:59.045192592 +0200
++++ libzypp-20130619/zypp/target/rpm/librpmDb.cc	2013-06-19 19:58:17.517211557 +0200
+@@ -101,7 +101,7 @@ public:
+   {
+     if ( _ts )
+     {
+-      ::rpmtsFree(_ts);
++      rpmtsFree(_ts);
+     }
+   }
+ };
+@@ -679,7 +679,11 @@ public:
+     if ( ! create( RPMDBI_PACKAGES ) )
+       return false;
+ #warning TESTCASE: rpmdbAppendIterator and (non)sequential access?
++#ifdef _RPM_5
++    ::rpmdbAppendIterator( _mi, (uint32_t*)&off_r, 1 );
++#else
+     ::rpmdbAppendIterator( _mi, &off_r, 1 );
++#endif
+     return advance();
+   }
+ 
+--- libzypp-20130619/zypp/target/rpm/librpm.h.omv~	2013-06-19 19:51:38.334202031 +0200
++++ libzypp-20130619/zypp/target/rpm/librpm.h	2013-06-19 19:51:52.925019621 +0200
+@@ -13,6 +13,7 @@
+ #define ZYPP_TARGET_RPM_LIBRPM_H
+ 
+ #ifdef _RPM_5
++#include <stdint.h>
+ // needs to be outside 'extern "C"'
+ #include <rpm/rpm4compat.h>
+ #endif // _RPM_5
+--- libzypp-20130619/zypp/target/rpm/RpmHeader.cc.omv~	2013-06-19 19:53:05.797108594 +0200
++++ libzypp-20130619/zypp/target/rpm/RpmHeader.cc	2013-06-19 19:56:36.684472140 +0200
+@@ -143,6 +143,10 @@ int gnameToGid(const char * thisGname, g
+ }
+ ////////////////////////////////////////////////////////////////////
+ #endif
++#ifdef _RPM_5
++#define _RPMVSF_NODIGESTS (RPMVSF_NOSHA1HEADER|RPMVSF_NOMD5HEADER|RPMVSF_NOSHA1|RPMVSF_NOMD5)
++#define _RPMVSF_NOSIGNATURES (RPMVSF_NODSAHEADER|RPMVSF_NORSAHEADER|RPMVSF_NODSA|RPMVSF_NORSA)
++#endif
+ 
+ #include <iostream>
+ #include <map>
