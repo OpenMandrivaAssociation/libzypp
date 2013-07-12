@@ -6,36 +6,36 @@
 %define libname %mklibname zypp %{major}
 %define devname %mklibname zypp -d
 
-Name: libzypp
-Version: 13.3.0
+Summary:	Software management engine
+Name:		libzypp
+Version:	13.3.0
 %if "%{beta}" == ""
 %if "%{scmrev}" == ""
-Release: 1
-Source0: %{name}-%{version}.tar.bz2
+Release:	1
+Source0:	%{name}-%{version}.tar.bz2
 %else
-Release: 0.%{scmrev}.2
-Source0: %{name}-%{scmrev}.tar.xz
+Release:	0.%{scmrev}.2
+Source0:	%{name}-%{scmrev}.tar.xz
 %endif
 %else
 %if "%{scmrev}" == ""
-Release: 0.%{beta}.1
-Source0: %{name}-%{version}%{beta}.tar.bz2
+Release:	0.%{beta}.1
+Source0:	%{name}-%{version}%{beta}.tar.bz2
 %else
-Release: 0.%{beta}.%{scmrev}.1
-Source0: %{name}-%{scmrev}.tar.xz
+Release:	0.%{beta}.%{scmrev}.1
+Source0:	%{name}-%{scmrev}.tar.xz
 %endif
 %endif
-Summary: Software management engine
-Patch0: libzypp-20130619-rpm5.patch
-URL: https://github.com/openSUSE/libzypp
-License: GPLv2+ with extra permission to link to OpenSSL
-Group: System/Libraries
-BuildRequires: solv-devel
-BuildRequires: pkgconfig(rpm)
-BuildRequires: cmake
-BuildRequires: pkgconfig(libcurl)
-BuildRequires: boost-devel
-BuildRequires: doxygen
+Patch0:		libzypp-20130619-rpm5.patch
+License:	GPLv2+ with extra permission to link to OpenSSL
+Group:		System/Libraries
+Url:		https://github.com/openSUSE/libzypp
+BuildRequires:	cmake
+BuildRequires:	doxygen
+BuildRequires:	boost-devel
+BuildRequires:	solv-devel
+BuildRequires:	pkgconfig(rpm)
+BuildRequires:	pkgconfig(libcurl)
 
 %description
 ZYpp is a Linux software management engine that powers products like
@@ -43,18 +43,18 @@ Zypper with a powerful dependency resolver and a convenient package
 management API.
 
 %package -n %{libname}
-Summary: Software management engine
-Group: System/Libraries
-Requires: %{name} = %{EVRD}
+Summary:	Software management engine
+Group:		System/Libraries
+Requires:	%{name} = %{EVRD}
 
 %description -n %{libname}
 Software management engine
 
 %package -n %{devname}
-Summary: Development files for %{name}
-Group: Development/C
-Requires: %{libname} = %{EVRD}
-Provides: zypp-devel = %{EVRD}
+Summary:	Development files for %{name}
+Group:		Development/C
+Requires:	%{libname} = %{EVRD}
+Provides:	zypp-devel = %{EVRD}
 
 %description -n %{devname}
 Development files (Headers etc.) for %{name}.
@@ -66,15 +66,13 @@ Development files (Headers etc.) for %{name}.
 %setup -q -n %{name}-%{scmrev}
 %endif
 %apply_patches
-%cmake
 
 %build
-cd build
+%cmake
 %make
 
 %install
-cd build
-%makeinstall_std
+%makeinstall_std -C build
 
 %files
 %{_bindir}/*
@@ -88,10 +86,11 @@ cd build
 %{_datadir}/zypp
 
 %files -n %{libname}
-%{_libdir}/*.so.%{major}*
+%{_libdir}/libzypp.so.%{major}*
 
 %files -n %{devname}
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_datadir}/cmake/Modules/*
+
