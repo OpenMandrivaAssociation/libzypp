@@ -11,7 +11,7 @@ Name:		libzypp
 Version:	13.3.0
 %if "%{beta}" == ""
 %if "%{scmrev}" == ""
-Release:	1
+Release:	2
 Source0:	%{name}-%{version}.tar.bz2
 %else
 Release:	0.%{scmrev}.2
@@ -26,10 +26,10 @@ Release:	0.%{beta}.%{scmrev}.1
 Source0:	%{name}-%{scmrev}.tar.xz
 %endif
 %endif
-Patch0:		libzypp-20130619-rpm5.patch
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
+Patch0:		libzypp-20130619-rpm5.patch
 BuildRequires:	cmake
 BuildRequires:	doxygen
 BuildRequires:	boost-devel
@@ -48,7 +48,7 @@ Group:		System/Libraries
 Requires:	%{name} = %{EVRD}
 
 %description -n %{libname}
-Software management engine
+Software management engine.
 
 %package -n %{devname}
 Summary:	Development files for %{name}
