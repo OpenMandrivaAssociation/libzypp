@@ -1,8 +1,8 @@
 # Avoid any -g (triggers compiler bug causing .LLST* undefined references)
 %define optflags -O2
-%define major 1302
+%define major 1403
 %define beta %{nil}
-%define scmrev 20130619
+%define scmrev 20140110
 %define libname %mklibname zypp %{major}
 %define devname %mklibname zypp -d
 
@@ -63,7 +63,7 @@ Development files (Headers etc.) for %{name}.
 %if "%{scmrev}" == ""
 %setup -q -n %{name}-%{version}%{beta}
 %else
-%setup -q -n %{name}-%{scmrev}
+%setup -q -n %{name}
 %endif
 %apply_patches
 
