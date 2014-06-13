@@ -11,7 +11,7 @@ Name:		libzypp
 Version:	13.3.0
 %if "%{beta}" == ""
 %if "%{scmrev}" == ""
-Release:	6
+Release:	7
 Source0:	%{name}-%{version}.tar.bz2
 %else
 Release:	0.%{scmrev}.2
