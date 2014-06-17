@@ -1,8 +1,8 @@
 # Avoid any -g (triggers compiler bug causing .LLST* undefined references)
 %define optflags -O2
-%define major 1302
+%define major 1403
 %define beta %{nil}
-%define scmrev 20130619
+%define scmrev 20140110
 %define libname %mklibname zypp %{major}
 %define devname %mklibname zypp -d
 
@@ -11,7 +11,7 @@ Name:		libzypp
 Version:	13.3.0
 %if "%{beta}" == ""
 %if "%{scmrev}" == ""
-Release:	2
+Release:	7
 Source0:	%{name}-%{version}.tar.bz2
 %else
 Release:	0.%{scmrev}.2
@@ -26,10 +26,10 @@ Release:	0.%{beta}.%{scmrev}.1
 Source0:	%{name}-%{scmrev}.tar.xz
 %endif
 %endif
-Patch0:		libzypp-20130619-rpm5.patch
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
+Patch0:		libzypp-20130619-rpm5.patch
 BuildRequires:	cmake
 BuildRequires:	doxygen
 BuildRequires:	boost-devel
@@ -48,7 +48,7 @@ Group:		System/Libraries
 Requires:	%{name} = %{EVRD}
 
 %description -n %{libname}
-Software management engine
+Software management engine.
 
 %package -n %{devname}
 Summary:	Development files for %{name}
@@ -63,7 +63,7 @@ Development files (Headers etc.) for %{name}.
 %if "%{scmrev}" == ""
 %setup -q -n %{name}-%{version}%{beta}
 %else
-%setup -q -n %{name}-%{scmrev}
+%setup -q -n %{name}
 %endif
 %apply_patches
 
