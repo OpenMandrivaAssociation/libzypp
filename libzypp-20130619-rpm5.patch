@@ -31,18 +31,17 @@
      }
    }
  };
-@@ -679,7 +679,11 @@ public:
+@@ -679,7 +679,9 @@
      if ( ! create( RPMDBI_PACKAGES ) )
        return false;
  #warning TESTCASE: rpmdbAppendIterator and (non)sequential access?
+-#ifdef RPMFILEITERMAX	// since rpm.4.12
 +#ifdef _RPM_5
 +    ::rpmdbAppendIterator( _mi, (uint32_t*)&off_r, 1 );
-+#else
++#elif defined(RPMFILEITERMAX)  // since rpm.4.12
+     ::rpmdbAppendIterator( _mi, (const unsigned *)&off_r, 1 );
+ #else
      ::rpmdbAppendIterator( _mi, &off_r, 1 );
-+#endif
-     return advance();
-   }
- 
 --- libzypp-20130619/zypp/target/rpm/librpm.h.omv~	2013-06-19 19:51:38.334202031 +0200
 +++ libzypp-20130619/zypp/target/rpm/librpm.h	2013-06-19 19:51:52.925019621 +0200
 @@ -13,6 +13,7 @@

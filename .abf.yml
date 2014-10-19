@@ -1,2 +1,4 @@
+removed_sources:
+  libzypp-20140110.tar.xz: 0f04af64e865d1d7039fde2da75cdfe4257e94a1
 sources:
-  "libzypp-20140110.tar.xz": 0f04af64e865d1d7039fde2da75cdfe4257e94a1
+  libzypp-14.30.0.tar.gz: 15468fd4eeb7b146bf1360a40b18e7b0eeb75195
