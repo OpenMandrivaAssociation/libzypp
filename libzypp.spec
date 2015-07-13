@@ -8,13 +8,13 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	14.30.0
+Version:	15.9.0
 %if "%{beta}" == ""
 %if "%{scmrev}" == ""
-Release:	2
+Release:	1
 Source0:	%{name}-%{version}.tar.gz
 %else
-Release:	0.%{scmrev}.2
+Release:	0.%{scmrev}.1
 Source0:	%{name}-%{scmrev}.tar.xz
 %endif
 %else
@@ -69,8 +69,6 @@ Development files (Headers etc.) for %{name}.
 %apply_patches
 
 %build
-export CC=gcc
-export CXX=g++
 %cmake
 %make
 
