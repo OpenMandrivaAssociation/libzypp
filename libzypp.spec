@@ -11,7 +11,7 @@ Name:		libzypp
 Version:	15.9.0
 %if "%{beta}" == ""
 %if "%{scmrev}" == ""
-Release:	2
+Release:	3
 Source0:	%{name}-%{version}.tar.gz
 %else
 Release:	0.%{scmrev}.1
