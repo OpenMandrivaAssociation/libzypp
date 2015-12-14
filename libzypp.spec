@@ -5,6 +5,7 @@
 %define scmrev %{nil}
 %define libname %mklibname zypp %{major}
 %define devname %mklibname zypp -d
+%define _disable_lto 1
 
 Summary:	Software management engine
 Name:		libzypp
