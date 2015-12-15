@@ -31,7 +31,7 @@ License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
 Patch0:		libzypp-20130619-rpm5.patch
-Patch1:		libzypp-14.30.0-compile.patch
+#Patch1:		libzypp-14.30.0-compile.patch
 BuildRequires:	cmake
 BuildRequires:	doxygen
 BuildRequires:	boost-devel
