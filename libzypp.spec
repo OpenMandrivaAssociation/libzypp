@@ -1,6 +1,6 @@
 # Avoid any -g (triggers compiler bug causing .LLST* undefined references)
 %define optflags -O2
-%define major 1430
+%define major 1519
 %define beta %{nil}
 %define scmrev %{nil}
 %define libname %mklibname zypp %{major}
@@ -9,7 +9,7 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	15.9.0
+Version:	15.20.0
 %if "%{beta}" == ""
 %if "%{scmrev}" == ""
 Release:	3
@@ -31,7 +31,7 @@ License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
 Patch0:		libzypp-20130619-rpm5.patch
-#Patch1:		libzypp-14.30.0-compile.patch
+Patch1:		libzypp-15.20.0-compile.patch
 BuildRequires:	cmake
 BuildRequires:	doxygen
 BuildRequires:	boost-devel
@@ -70,6 +70,9 @@ Development files (Headers etc.) for %{name}.
 %apply_patches
 
 %build
+# does not build with clang
+export CC=gcc
+export CXX=g++
 %cmake
 %make
 

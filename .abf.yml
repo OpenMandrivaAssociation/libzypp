@@ -1,3 +1,4 @@
----
-sources:
+removed_sources:
   libzypp-15.9.0.tar.gz: d0ba1c27a3113ccffec07c9d81d0ca484dcaa61e
+sources:
+  libzypp-15.20.0.tar.gz: 1f4d7dc1e7d06c88923e21d80808fd4b30de746f

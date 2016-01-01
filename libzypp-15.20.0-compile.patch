@@ -1,0 +1,11 @@
+--- libzypp-15.9.0/zypp/target/rpm/RpmDb.cc.orig	2016-01-01 22:53:01.353871806 +0000
++++ libzypp-15.9.0/zypp/target/rpm/RpmDb.cc	2016-01-01 22:53:46.846875220 +0000
+@@ -1517,7 +1517,7 @@
+ 
+   rpmQVKArguments_s qva;
+   memset( &qva, 0, sizeof(rpmQVKArguments_s) );
+-  qva.qva_flags = (VERIFY_DIGEST|VERIFY_SIGNATURE);
++  qva.qva_flags = (rpmQueryFlags)(VERIFY_DIGEST|VERIFY_SIGNATURE);
+ 
+   RpmlogCapture vresult;
+   int res = ::rpmVerifySignatures( &qva, ts, fd, path_r.basename().c_str() );
