@@ -36,6 +36,7 @@ BuildRequires:	pkgconfig(rpm)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(libcurl)
+BuildRequires:	pkgconfig(openssl)
 BuildConflicts:	pkgconfig(rpm) >= 5
 
 %description
