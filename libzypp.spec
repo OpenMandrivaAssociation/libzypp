@@ -37,6 +37,7 @@ BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(openssl)
+BuildRequires:	pkgconfig(libudev)
 BuildConflicts:	pkgconfig(rpm) >= 5
 
 %description
@@ -70,9 +71,6 @@ Development files (Headers etc.) for %{name}.
 %apply_patches
 
 %build
-# does not build with clang
-export CC=gcc
-export CXX=g++
 %cmake
 %make
 
