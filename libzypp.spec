@@ -34,7 +34,9 @@ BuildRequires:	boost-devel
 BuildRequires:	solv-devel
 BuildRequires:	pkgconfig(rpm)
 BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(libcurl)
+BuildConflicts:	pkgconfig(rpm) >= 5
 
 %description
 ZYpp is a Linux software management engine that powers products like
