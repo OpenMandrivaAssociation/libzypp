@@ -11,10 +11,12 @@ Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{versio
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
+BuildRequires:	asciidoc
 BuildRequires:	cmake
 BuildRequires:	doxygen
 BuildRequires:	boost-devel
 BuildRequires:	solv-devel
+BuildRequires:  graphviz
 BuildRequires:	pkgconfig(rpm)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(expat)
@@ -22,6 +24,8 @@ BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libudev)
 BuildRequires:  pkgconfig(gpgme)
+BuildRequires:  pkgconfig(libproxy-1.0)
+
 
 %description
 ZYpp is a Linux software management engine that powers products like
