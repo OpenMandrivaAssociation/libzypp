@@ -1,4 +1,4 @@
-%define major 1519
+%define major 1712
 %define beta %{nil}
 %define scmrev %{nil}
 %define libname %mklibname zypp %{major}
@@ -7,11 +7,11 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	15.25.12
+Version:	17.15.0
 %if "%{beta}" == ""
 %if "%{scmrev}" == ""
-Release:	2
-Source0:	%{name}-%{version}.tar.gz
+Release:	1
+Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 %else
 Release:	0.%{scmrev}.1
 Source0:	%{name}-%{scmrev}.tar.xz
@@ -38,7 +38,6 @@ BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libudev)
-BuildConflicts:	pkgconfig(rpm) >= 5
 
 %description
 ZYpp is a Linux software management engine that powers products like
@@ -71,11 +70,11 @@ Development files (Headers etc.) for %{name}.
 %apply_patches
 
 %build
-%cmake
-%make
+%cmake -DFEDORA:BOOL=TRUE -DENABLE_BUILD_TRANS=ON
+%make_build
 
 %install
-%makeinstall_std -C build
+%make_install -C build
 
 %files
 %{_bindir}/*
