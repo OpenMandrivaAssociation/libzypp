@@ -11,6 +11,7 @@ Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{versio
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
+Patch0: libzypp-17.15.0-underlinking.patch
 BuildRequires:  a2x
 BuildRequires:	asciidoc
 BuildRequires:	cmake
