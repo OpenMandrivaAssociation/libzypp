@@ -56,6 +56,8 @@ Development files (Headers etc.) for %{name}.
 %autopatch -p1
 
 %build
+export CC=gcc
+export CXX=g++
 %cmake -DFEDORA:BOOL=TRUE -DENABLE_BUILD_TRANS=ON
 %make_build
 
