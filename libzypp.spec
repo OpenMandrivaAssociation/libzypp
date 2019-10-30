@@ -1,6 +1,4 @@
 %define major 1712
-%define beta %{nil}
-%define scmrev %{nil}
 %define libname %mklibname zypp %{major}
 %define devname %mklibname zypp -d
 %define _disable_lto 1
@@ -8,23 +6,8 @@
 Summary:	Software management engine
 Name:		libzypp
 Version:	17.15.0
-%if "%{beta}" == ""
-%if "%{scmrev}" == ""
 Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
-%else
-Release:	0.%{scmrev}.1
-Source0:	%{name}-%{scmrev}.tar.xz
-%endif
-%else
-%if "%{scmrev}" == ""
-Release:	0.%{beta}.1
-Source0:	%{name}-%{version}%{beta}.tar.bz2
-%else
-Release:	0.%{beta}.%{scmrev}.1
-Source0:	%{name}-%{scmrev}.tar.xz
-%endif
-%endif
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
@@ -62,12 +45,8 @@ Provides:	zypp-devel = %{EVRD}
 Development files (Headers etc.) for %{name}.
 
 %prep
-%if "%{scmrev}" == ""
-%setup -q -n %{name}-%{version}%{beta}
-%else
-%setup -q -n %{name}
-%endif
-%apply_patches
+%setup -q
+%autopatch -p1
 
 %build
 %cmake -DFEDORA:BOOL=TRUE -DENABLE_BUILD_TRANS=ON
