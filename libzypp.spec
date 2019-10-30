@@ -21,6 +21,7 @@ BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libudev)
+BuildRequires:  pkgconfig(gpgme)
 
 %description
 ZYpp is a Linux software management engine that powers products like
