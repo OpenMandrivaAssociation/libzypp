@@ -1,0 +1,28 @@
+diff -up libzypp-17.16.0/zypp/parser/xml/libxmlfwd.h.omv~ libzypp-17.16.0/zypp/parser/xml/libxmlfwd.h
+--- libzypp-17.16.0/zypp/parser/xml/libxmlfwd.h.omv~	2019-11-11 00:13:13.063124044 +0100
++++ libzypp-17.16.0/zypp/parser/xml/libxmlfwd.h	2019-11-11 00:13:19.071141208 +0100
+@@ -12,11 +12,8 @@
+ #ifndef ZYPP_PARSER_XML_LIBXMLFWD_H
+ #define ZYPP_PARSER_XML_LIBXMLFWD_H
+ 
+-extern "C"
+-{
+ #include <libxml/xmlreader.h>
+ #include <libxml/xmlerror.h>
+-}
+ 
+ #include <iosfwd>
+ 
+diff -up libzypp-17.16.0/zypp/sat/Solvable.cc.omv~ libzypp-17.16.0/zypp/sat/Solvable.cc
+diff -up libzypp-17.16.0/zypp/ZYpp.h.omv~ libzypp-17.16.0/zypp/ZYpp.h
+--- libzypp-17.16.0/zypp/ZYpp.h.omv~	2019-11-11 00:11:53.526896960 +0100
++++ libzypp-17.16.0/zypp/ZYpp.h	2019-11-11 00:12:04.227927497 +0100
+@@ -149,7 +149,7 @@ namespace zypp
+     explicit ZYpp( const Impl_Ptr & impl_r );
+   private:
+     /** Deleted via shared_ptr */
+-    friend void ::boost::checked_delete<ZYpp>(ZYpp*);	// template<class T> inline void checked_delete(T * x)
++    friend void ::boost::checked_delete<ZYpp>(ZYpp*) noexcept;	// template<class T> inline void checked_delete(T * x)
+     /** Dtor */
+     ~ZYpp();
+   private:

@@ -12,9 +12,11 @@ License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
 Patch0: libzypp-17.15.0-underlinking.patch
+Patch1:		libzypp-17.16.0-compile.patch
 BuildRequires:  a2x
 BuildRequires:	asciidoc
 BuildRequires:	cmake
+BuildRequires:	ninja
 BuildRequires:	doxygen
 BuildRequires:	boost-devel
 BuildRequires:	solv-devel
@@ -52,26 +54,23 @@ Provides:	zypp-devel = %{EVRD}
 Development files (Headers etc.) for %{name}.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
-export CC=gcc
-export CXX=g++
-%cmake -DFEDORA:BOOL=TRUE -DENABLE_BUILD_TRANS=ON
-%make_build
+%cmake -DFEDORA:BOOL=TRUE -DENABLE_BUILD_TRANS=ON -G Ninja
+%ninja_build
 
 %install
-%make_install -C build
+%ninja_install -C build
+%find_lang zypp
 
-%files
+%files -f zypp.lang
 %{_bindir}/*
 %config %{_sysconfdir}/logrotate.d/zypp-history.lr
 %dir %{_sysconfdir}/zypp
+%config %{_sysconfdir}/zypp/needreboot
 %config %{_sysconfdir}/zypp/systemCheck
 %config %{_sysconfdir}/zypp/zypp.conf
-%dir %{_prefix}/lib/zypp
-%{_prefix}/lib/zypp/notify-message
 %{_datadir}/man/man5/*.5*
 %{_mandir}/man1/*
 %{_datadir}/zypp
@@ -84,4 +83,3 @@ export CXX=g++
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_datadir}/cmake/Modules/*
-
