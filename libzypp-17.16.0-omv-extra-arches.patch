@@ -1,0 +1,109 @@
+diff -up libzypp-17.16.0/zypp/Arch.cc.omv~ libzypp-17.16.0/zypp/Arch.cc
+--- libzypp-17.16.0/zypp/Arch.cc.omv~	2019-11-11 01:21:26.438690880 +0100
++++ libzypp-17.16.0/zypp/Arch.cc	2019-11-11 01:25:54.572797614 +0100
+@@ -161,6 +161,7 @@ namespace zypp
+   DEF_BUILTIN( i686 );
+   DEF_BUILTIN( athlon );
+   DEF_BUILTIN( x86_64 );
++  DEF_BUILTIN( znver1 );
+ 
+   DEF_BUILTIN( pentium3 );
+   DEF_BUILTIN( pentium4 );
+@@ -192,6 +193,10 @@ namespace zypp
+ 
+   DEF_BUILTIN( aarch64 );
+ 
++  DEF_BUILTIN( armv8hcnl );
++  DEF_BUILTIN( armv8hnl );
++  DEF_BUILTIN( armv8hl );
++
+   DEF_BUILTIN( armv7tnhl );	/* exists? */
+   DEF_BUILTIN( armv7thl );	/* exists? */
+ 
+@@ -308,6 +313,7 @@ namespace zypp
+         defCompatibleWith( a_i686(),		a_noarch(),a_i386(),a_i486(),a_i586() );
+         defCompatibleWith( a_athlon(),		a_noarch(),a_i386(),a_i486(),a_i586(),a_i686() );
+         defCompatibleWith( a_x86_64(),		a_noarch(),a_i386(),a_i486(),a_i586(),a_i686(),a_athlon() );
++        defCompatibleWith( a_znver1(),		a_noarch(),a_i386(),a_i486(),a_i586(),a_i686(),a_athlon(),a_x86_64() );
+ 
+         defCompatibleWith( a_pentium3(),	a_noarch(),a_i386(),a_i486(),a_i586(),a_i686() );
+         defCompatibleWith( a_pentium4(),	a_noarch(),a_i386(),a_i486(),a_i586(),a_i686(),a_pentium3() );
+@@ -357,6 +363,10 @@ namespace zypp
+ 	/*?*/defCompatibleWith( a_armv7thl(),	a_noarch(),a_armv7hl() );
+         /*?*/defCompatibleWith( a_armv7tnhl(),	a_noarch(),a_armv7hl(),a_armv7nhl(),a_armv7thl() );
+ 
++	defCompatibleWith( a_armv8hl(),		a_noarch(),a_armv7hl() );
++	defCompatibleWith( a_armv8hnl(),	a_noarch(),a_armv7hl(),a_armv7hnl(),a_armv8hl() );
++	defCompatibleWith( a_armv8hcnl(),	a_noarch(),a_armv7hl(),a_armv7hnl(),a_armv8hl(),a_armv8hnl() );
++
+         defCompatibleWith( a_aarch64(),		a_noarch() );
+         //
+         defCompatibleWith( a_riscv64(),		a_noarch() );
+diff -up libzypp-17.16.0/zypp/Arch.h.omv~ libzypp-17.16.0/zypp/Arch.h
+--- libzypp-17.16.0/zypp/Arch.h.omv~	2019-11-11 01:17:59.565823198 +0100
++++ libzypp-17.16.0/zypp/Arch.h	2019-11-11 01:18:53.312050121 +0100
+@@ -170,6 +170,8 @@ namespace zypp
+   extern const Arch Arch_pentium3;
+ 
+   /** \relates Arch */
++  extern const Arch Arch_znver1;
++  /** \relates Arch */
+   extern const Arch Arch_x86_64;
+   /** \relates Arch */
+   extern const Arch Arch_athlon;
+@@ -230,6 +232,13 @@ namespace zypp
+   extern const Arch Arch_aarch64;
+ 
+   /** \relates Arch */
++  extern const Arch Arch_armv8hcnl;
++  /** \relates Arch */
++  extern const Arch Arch_armv8hnl;
++  /** \relates Arch */
++  extern const Arch Arch_armv8hl;
++
++  /** \relates Arch */
+   extern const Arch Arch_armv7tnhl;	/* exists? */
+   /** \relates Arch */
+   extern const Arch Arch_armv7thl;	/* exists? */
+diff -up libzypp-17.16.0/zypp/parser/yum/schema/common-inc.rnc.omv~ libzypp-17.16.0/zypp/parser/yum/schema/common-inc.rnc
+--- libzypp-17.16.0/zypp/parser/yum/schema/common-inc.rnc.omv~	2019-11-11 01:19:15.326142738 +0100
++++ libzypp-17.16.0/zypp/parser/yum/schema/common-inc.rnc	2019-11-11 01:19:58.189322558 +0100
+@@ -34,6 +34,7 @@ private.archenum = "noarch"
+             | "x86_64"
+             | "pentium3"
+             | "pentium4"
++            | "znver1"
+             | "s390"
+             | "s390x"
+             | "ppc"
+@@ -52,6 +53,9 @@ private.archenum = "noarch"
+             | "sparcv8"
+             | "sparc"
+             | "aarch64"
++            | "armv8hcnl"
++            | "armv8hnl"
++            | "armv8hl"
+             | "armv7tnhl"
+             | "armv7thl"
+             | "armv7nhl"
+diff -up libzypp-17.16.0/zypp/parser/yum/schema/common-inc.rng.omv~ libzypp-17.16.0/zypp/parser/yum/schema/common-inc.rng
+--- libzypp-17.16.0/zypp/parser/yum/schema/common-inc.rng.omv~	2019-11-11 01:20:00.628332772 +0100
++++ libzypp-17.16.0/zypp/parser/yum/schema/common-inc.rng	2019-11-11 01:21:00.958584782 +0100
+@@ -97,6 +97,7 @@
+       <value>x86_64</value>
+       <value>pentium3</value>
+       <value>pentium4</value>
++      <value>znver1</value>
+       <value>s390</value>
+       <value>s390x</value>
+       <value>ppc</value>
+@@ -115,6 +116,9 @@
+       <value>sparcv8</value>
+       <value>sparc</value>
+       <value>aarch64</value>
++      <value>armv8hcnl</value>
++      <value>armv8hnl</value>
++      <value>armv8hl</value>
+       <value>armv7tnhl</value>
+       <value>armv7thl</value>
+       <value>armv7nhl</value>

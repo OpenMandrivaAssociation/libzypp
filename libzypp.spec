@@ -6,13 +6,14 @@
 Summary:	Software management engine
 Name:		libzypp
 Version:	17.16.0
-Release:	1
+Release:	2
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
 Patch0: libzypp-17.15.0-underlinking.patch
 Patch1:		libzypp-17.16.0-compile.patch
+Patch2:		libzypp-17.16.0-omv-extra-arches.patch
 BuildRequires:  a2x
 BuildRequires:	asciidoc
 BuildRequires:	cmake
