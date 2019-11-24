@@ -6,7 +6,7 @@
 Summary:	Software management engine
 Name:		libzypp
 Version:	17.16.0
-Release:	2
+Release:	3
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
@@ -30,6 +30,7 @@ BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libudev)
 BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  pkgconfig(libproxy-1.0)
+Recommends:	openmandriva-repos
 
 
 %description
@@ -65,6 +66,9 @@ Development files (Headers etc.) for %{name}.
 %ninja_install -C build
 %find_lang zypp
 
+# Let's use the same repo files for dnf and zypper...
+ln -s ../yum.repos.d %{buildroot}/%{_sysconfdir}/zypp/repos.d
+
 %files -f zypp.lang
 %{_bindir}/*
 %config %{_sysconfdir}/logrotate.d/zypp-history.lr
@@ -72,6 +76,7 @@ Development files (Headers etc.) for %{name}.
 %config %{_sysconfdir}/zypp/needreboot
 %config %{_sysconfdir}/zypp/systemCheck
 %config %{_sysconfdir}/zypp/zypp.conf
+%{_sysconfdir}/zypp/repos.d
 %{_datadir}/man/man5/*.5*
 %{_mandir}/man1/*
 %{_datadir}/zypp
