@@ -1,12 +1,12 @@
-%define major 1712
+%define major 1722
 %define libname %mklibname zypp %{major}
 %define devname %mklibname zypp -d
 %define _disable_lto 1
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.16.0
-Release:	7
+Version:	17.25.2
+Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
@@ -22,6 +22,8 @@ BuildRequires:	doxygen
 BuildRequires:	boost-devel
 BuildRequires:	solv-devel
 BuildRequires:  graphviz
+BuildRequires:	nginx
+BuildRequires:	fcgi-devel
 BuildRequires:	pkgconfig(rpm)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(expat)
