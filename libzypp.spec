@@ -32,6 +32,7 @@ BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libudev)
 BuildRequires:  pkgconfig(gpgme)
 BuildRequires:  pkgconfig(libproxy-1.0)
+BuildRequires:	pkgconfig(yaml-cpp)
 Recommends:	openmandriva-repos
 
 
