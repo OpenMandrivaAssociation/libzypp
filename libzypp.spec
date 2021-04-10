@@ -11,17 +11,17 @@ Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{versio
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
-Patch0: libzypp-17.15.0-underlinking.patch
+Patch0:		libzypp-17.15.0-underlinking.patch
 Patch1:		libzypp-17.16.0-compile.patch
 Patch2:		libzypp-17.16.0-omv-extra-arches.patch
-BuildRequires:  a2x
+BuildRequires:	a2x
 BuildRequires:	asciidoc
 BuildRequires:	cmake
 BuildRequires:	ninja
 BuildRequires:	doxygen
 BuildRequires:	boost-devel
-BuildRequires:	solv-devel
-BuildRequires:  graphviz
+BuildRequires:	pkgconfig(libsolv)
+BuildRequires:	graphviz
 BuildRequires:	nginx
 BuildRequires:	fcgi-devel
 BuildRequires:	pkgconfig(rpm)
@@ -30,12 +30,12 @@ BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libudev)
-BuildRequires:  pkgconfig(gpgme)
-BuildRequires:  pkgconfig(libproxy-1.0)
+BuildRequires:	pkgconfig(gpgme)
+BuildRequires:	pkgconfig(libproxy-1.0)
 BuildRequires:	pkgconfig(yaml-cpp)
 BuildRequires:	pkgconfig(sigc++-2.0)
-Recommends:	openmandriva-repos
-
+Requires:	libsolv
+Recommends:	distro-release-repos
 
 %description
 ZYpp is a Linux software management engine that powers products like
