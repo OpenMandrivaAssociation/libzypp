@@ -82,6 +82,7 @@ ln -s ../yum.repos.d %{buildroot}/%{_sysconfdir}/zypp/repos.d
 %config %{_sysconfdir}/zypp/systemCheck
 %config %{_sysconfdir}/zypp/zypp.conf
 %{_sysconfdir}/zypp/repos.d
+%{_libexecdir}/zypp/zypp-rpm
 %{_datadir}/man/man5/*.5*
 %{_mandir}/man1/*
 %{_datadir}/zypp
