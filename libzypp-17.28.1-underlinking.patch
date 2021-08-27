@@ -1,19 +1,19 @@
-diff -up libzypp-17.25.2/zypp/CMakeLists.txt.1~ libzypp-17.25.2/zypp/CMakeLists.txt
---- libzypp-17.25.2/zypp/CMakeLists.txt.1~	2020-10-19 19:31:44.064177188 +0200
-+++ libzypp-17.25.2/zypp/CMakeLists.txt	2020-10-19 19:32:37.445862338 +0200
-@@ -917,6 +917,7 @@ macro( ADDZYPPLIB LIBNAME )
-   SET(UTIL_LIBRARY util)
+diff -uraN libzypp-17.28.1/zypp/CMakeLists.txt omv-libzypp-17.28.1/zypp/CMakeLists.txt
+--- libzypp-17.28.1/zypp/CMakeLists.txt	2021-08-23 08:40:42.000000000 +0200
++++ omv-libzypp-17.28.1/zypp/CMakeLists.txt	2021-08-27 12:34:59.444664736 +0200
+@@ -948,6 +948,7 @@
+ 
    TARGET_LINK_LIBRARIES(${LIBNAME} ${UTIL_LIBRARY} )
    TARGET_LINK_LIBRARIES(${LIBNAME} ${RPM_LIBRARY} )
 +  TARGET_LINK_LIBRARIES(${LIBNAME} -lrpmio)
    TARGET_LINK_LIBRARIES(${LIBNAME} ${GETTEXT_LIBRARIES} )
    TARGET_LINK_LIBRARIES(${LIBNAME} ${CURL_LIBRARIES} )
    TARGET_LINK_LIBRARIES(${LIBNAME} ${LIBXML2_LIBRARIES} )
-@@ -927,6 +928,7 @@ macro( ADDZYPPLIB LIBNAME )
+@@ -956,6 +957,7 @@
    TARGET_LINK_LIBRARIES(${LIBNAME} ${SIGNALS_LIBRARY})
    TARGET_LINK_LIBRARIES(${LIBNAME} ${Boost_THREAD_LIBRARY})
    TARGET_LINK_LIBRARIES(${LIBNAME} ${GPGME_PTHREAD_LIBRARIES})
 +  TARGET_LINK_LIBRARIES(${LIBNAME} -lpthread)
-   target_link_libraries(${LIBNAME} ${SIGCPP_LIBRARIES})
-   target_link_libraries(${LIBNAME} ${LIBGLIB_LIBRARIES})
    target_link_libraries(${LIBNAME} ${YAML_CPP_LIBRARIES})
+   target_link_libraries(${LIBNAME} ${PROTOBUF_LITE_LIBRARIES})
+ 

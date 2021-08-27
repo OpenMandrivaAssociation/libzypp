@@ -5,13 +5,13 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.27.0
+Version:	17.28.1
 Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
-Patch0:		libzypp-17.15.0-underlinking.patch
+Patch0:		libzypp-17.28.1-underlinking.patch
 Patch1:		libzypp-17.16.0-compile.patch
 Patch2:		libzypp-17.16.0-omv-extra-arches.patch
 BuildRequires:	a2x
@@ -28,6 +28,7 @@ BuildRequires:	pkgconfig(rpm)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(libcurl)
+BuildRequires:  pkgconfig(protobuf)
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(libudev)
 BuildRequires:	pkgconfig(gpgme)
@@ -81,6 +82,7 @@ ln -s ../yum.repos.d %{buildroot}/%{_sysconfdir}/zypp/repos.d
 %config %{_sysconfdir}/zypp/systemCheck
 %config %{_sysconfdir}/zypp/zypp.conf
 %{_sysconfdir}/zypp/repos.d
+%{_libexecdir}/zypp/zypp-rpm
 %{_datadir}/man/man5/*.5*
 %{_mandir}/man1/*
 %{_datadir}/zypp
