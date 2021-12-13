@@ -1,7 +1,7 @@
-diff -uraN libzypp-17.28.1/zypp/CMakeLists.txt omv-libzypp-17.28.1/zypp/CMakeLists.txt
---- libzypp-17.28.1/zypp/CMakeLists.txt	2021-08-23 08:40:42.000000000 +0200
-+++ omv-libzypp-17.28.1/zypp/CMakeLists.txt	2021-08-27 12:34:59.444664736 +0200
-@@ -948,6 +948,7 @@
+diff -uraN libzypp-17.28.8/zypp/CMakeLists.txt omv-libzypp-17.28.8/zypp/CMakeLists.txt
+--- libzypp-17.28.8/zypp/CMakeLists.txt	2021-11-11 15:12:49.000000000 +0100
++++ omv-libzypp-17.28.8/zypp/CMakeLists.txt	2021-12-13 00:41:43.301459659 +0100
+@@ -947,6 +947,7 @@
  
    TARGET_LINK_LIBRARIES(${LIBNAME} ${UTIL_LIBRARY} )
    TARGET_LINK_LIBRARIES(${LIBNAME} ${RPM_LIBRARY} )
@@ -9,11 +9,11 @@ diff -uraN libzypp-17.28.1/zypp/CMakeLists.txt omv-libzypp-17.28.1/zypp/CMakeLis
    TARGET_LINK_LIBRARIES(${LIBNAME} ${GETTEXT_LIBRARIES} )
    TARGET_LINK_LIBRARIES(${LIBNAME} ${CURL_LIBRARIES} )
    TARGET_LINK_LIBRARIES(${LIBNAME} ${LIBXML2_LIBRARIES} )
-@@ -956,6 +957,7 @@
+@@ -955,6 +956,7 @@
    TARGET_LINK_LIBRARIES(${LIBNAME} ${SIGNALS_LIBRARY})
    TARGET_LINK_LIBRARIES(${LIBNAME} ${Boost_THREAD_LIBRARY})
    TARGET_LINK_LIBRARIES(${LIBNAME} ${GPGME_PTHREAD_LIBRARIES})
 +  TARGET_LINK_LIBRARIES(${LIBNAME} -lpthread)
    target_link_libraries(${LIBNAME} ${YAML_CPP_LIBRARIES})
    target_link_libraries(${LIBNAME} ${PROTOBUF_LITE_LIBRARIES})
- 
+   TARGET_LINK_LIBRARIES(${LIBNAME} pthread )
