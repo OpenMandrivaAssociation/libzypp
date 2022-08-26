@@ -9,17 +9,6 @@ diff -uraN libzypp-17.28.8/zypp/Arch.cc omv-libzypp-17.28.8/zypp/Arch.cc
  
    DEF_BUILTIN( pentium3 );
    DEF_BUILTIN( pentium4 );
-@@ -191,6 +192,10 @@
-   DEF_BUILTIN( sparc );
- 
-   DEF_BUILTIN( aarch64 );
-+  
-+  DEF_BUILTIN( armv8hcnl );
-+  DEF_BUILTIN( armv8hnl );
-+  DEF_BUILTIN( armv8hl );
- 
-   DEF_BUILTIN( armv7tnhl );	/* exists? */
-   DEF_BUILTIN( armv7thl );	/* exists? */
 @@ -308,6 +313,7 @@
          defCompatibleWith( a_i686(),		a_noarch(),a_i386(),a_i486(),a_i586() );
          defCompatibleWith( a_athlon(),		a_noarch(),a_i386(),a_i486(),a_i586(),a_i686() );
@@ -28,17 +17,6 @@ diff -uraN libzypp-17.28.8/zypp/Arch.cc omv-libzypp-17.28.8/zypp/Arch.cc
  
          defCompatibleWith( a_pentium3(),	a_noarch(),a_i386(),a_i486(),a_i586(),a_i686() );
          defCompatibleWith( a_pentium4(),	a_noarch(),a_i386(),a_i486(),a_i586(),a_i686(),a_pentium3() );
-@@ -357,6 +363,10 @@
-         /*?*/defCompatibleWith( a_armv7thl(),	a_noarch(),a_armv7hl() );
-         /*?*/defCompatibleWith( a_armv7tnhl(),	a_noarch(),a_armv7hl(),a_armv7nhl(),a_armv7thl() );
- 
-+	defCompatibleWith( a_armv8hl(),		a_noarch(),a_armv7hl() );
-+	defCompatibleWith( a_armv8hnl(),	a_noarch(),a_armv7hl(),a_armv7hnl(),a_armv8hl() );
-+	defCompatibleWith( a_armv8hcnl(),	a_noarch(),a_armv7hl(),a_armv7hnl(),a_armv8hl(),a_armv8hnl() );
-+
-         defCompatibleWith( a_aarch64(),		a_noarch() );
-         //
-         defCompatibleWith( a_riscv64(),		a_noarch() );
 diff -uraN libzypp-17.28.8/zypp/Arch.h omv-libzypp-17.28.8/zypp/Arch.h
 --- libzypp-17.28.8/zypp/Arch.h	2021-11-11 15:12:49.000000000 +0100
 +++ omv-libzypp-17.28.8/zypp/Arch.h	2021-12-13 01:09:18.842401475 +0100
@@ -51,20 +29,6 @@ diff -uraN libzypp-17.28.8/zypp/Arch.h omv-libzypp-17.28.8/zypp/Arch.h
    extern const Arch Arch_x86_64;
    /** \relates Arch */
    extern const Arch Arch_athlon;
-@@ -230,6 +232,13 @@
-   extern const Arch Arch_aarch64;
- 
-   /** \relates Arch */
-+  extern const Arch Arch_armv8hcnl;
-+  /** \relates Arch */
-+  extern const Arch Arch_armv8hnl;
-+  /** \relates Arch */
-+  extern const Arch Arch_armv8hl;
-+
-+  /** \relates Arch */
-   extern const Arch Arch_armv7tnhl;	/* exists? */
-   /** \relates Arch */
-   extern const Arch Arch_armv7thl;	/* exists? */
 diff -uraN libzypp-17.28.8/zypp/parser/yum/schema/common-inc.rng omv-libzypp-17.28.8/zypp/parser/yum/schema/common-inc.rng
 --- libzypp-17.28.8/zypp/parser/yum/schema/common-inc.rng	2021-11-11 15:12:49.000000000 +0100
 +++ omv-libzypp-17.28.8/zypp/parser/yum/schema/common-inc.rng	2021-12-13 01:14:29.713390549 +0100
@@ -76,13 +40,3 @@ diff -uraN libzypp-17.28.8/zypp/parser/yum/schema/common-inc.rng omv-libzypp-17.
        <value>s390</value>
        <value>s390x</value>
        <value>ppc</value>
-@@ -115,6 +116,9 @@
-       <value>sparcv8</value>
-       <value>sparc</value>
-       <value>aarch64</value>
-+      <value>armv8hcnl</value>      
-+      <value>armv8hnl</value>   
-+      <value>armv8hl</value>         
-       <value>armv7tnhl</value>
-       <value>armv7thl</value>
-       <value>armv7nhl</value>

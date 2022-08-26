@@ -1,0 +1,11 @@
+diff -up libzypp-17.31.0/zypp/CMakeLists.txt.omv~ libzypp-17.31.0/zypp/CMakeLists.txt
+--- libzypp-17.31.0/zypp/CMakeLists.txt.omv~	2022-08-26 19:24:30.670134243 +0200
++++ libzypp-17.31.0/zypp/CMakeLists.txt	2022-08-26 19:25:01.787379997 +0200
+@@ -913,6 +913,7 @@ macro( ADDZYPPLIB LIBNAME )
+   TARGET_LINK_LIBRARIES(${LIBNAME} ${Boost_THREAD_LIBRARY})
+   TARGET_LINK_LIBRARIES(${LIBNAME} ${GPGME_PTHREAD_LIBRARIES})
+   target_link_libraries(${LIBNAME} ${YAML_CPP_LIBRARIES})
++  target_link_libraries(${LIBNAME} -lyaml-cpp)
+   target_link_libraries(${LIBNAME} ${PROTOBUF_LITE_LIBRARIES})
+   TARGET_LINK_LIBRARIES(${LIBNAME} pthread )
+ 

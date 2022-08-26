@@ -5,8 +5,8 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.28.8
-Release:	3
+Version:	17.31.0
+Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
@@ -14,6 +14,7 @@ Url:		https://github.com/openSUSE/libzypp
 Patch0:		libzypp-17.28.1-underlinking.patch
 Patch1:		libzypp-17.16.0-compile.patch
 Patch2:		libzypp-17.16.0-omv-extra-arches.patch
+Patch3:		libzypp-17.31-yamllinkage.patch
 BuildRequires:	a2x
 BuildRequires:	asciidoc
 BuildRequires:	cmake
@@ -35,6 +36,8 @@ BuildRequires:	pkgconfig(gpgme)
 BuildRequires:	pkgconfig(libproxy-1.0)
 BuildRequires:	pkgconfig(yaml-cpp)
 BuildRequires:	pkgconfig(sigc++-2.0)
+BuildRequires:	pkgconfig(zck)
+BuildRequires:	pkgconfig(libzstd)
 Requires:	libsolv
 Recommends:	distro-release-repos
 
@@ -64,7 +67,13 @@ Development files (Headers etc.) for %{name}.
 %autosetup -p1
 
 %build
-%cmake -DFEDORA:BOOL=TRUE -DENABLE_BUILD_TRANS=ON -G Ninja
+%cmake \
+	-DFEDORA:BOOL=TRUE \
+	-DENABLE_BUILD_TRANS=ON \
+	-DENABLE_ZCHUNK_COMPRESSION:BOOL=ON \
+	-DENABLE_ZSTD_COMPRESSION:BOOL=ON \
+	-DEXPORT_NG_API:BOOL=ON \
+	-G Ninja
 %ninja_build
 
 %install
