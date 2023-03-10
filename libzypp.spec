@@ -3,16 +3,18 @@
 %define devname %mklibname zypp -d
 %define _disable_lto 1
 
+%global optflags %{optflags} -DPROTOBUF_USE_DLLS
+
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.31.0
-Release:	3
+Version:	17.31.8
+Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
 Patch0:		libzypp-17.28.1-underlinking.patch
-Patch1:		libzypp-17.16.0-compile.patch
+Patch1:		libzypp-17.31.8-protobuf-implicit-deps.patch
 Patch2:		libzypp-17.16.0-omv-extra-arches.patch
 Patch3:		libzypp-17.31-yamllinkage.patch
 BuildRequires:	a2x
@@ -23,7 +25,7 @@ BuildRequires:	doxygen
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libsolv)
 BuildRequires:	graphviz
-BuildRequires:	nginx
+BuildRequires:	(nginx or nginx-quic)
 BuildRequires:	fcgi-devel
 BuildRequires:	cmake(absl)
 BuildRequires:	pkgconfig(rpm)
@@ -68,6 +70,7 @@ Development files (Headers etc.) for %{name}.
 %autosetup -p1
 
 %build
+export CXX=g++
 %cmake \
 	-DFEDORA:BOOL=TRUE \
 	-DENABLE_BUILD_TRANS=ON \

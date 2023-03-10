@@ -1,0 +1,12 @@
+diff -up libzypp-17.31.8/zypp-core/CMakeLists.txt.omv~ libzypp-17.31.8/zypp-core/CMakeLists.txt
+--- libzypp-17.31.8/zypp-core/CMakeLists.txt.omv~	2023-03-10 16:45:37.444560405 +0100
++++ libzypp-17.31.8/zypp-core/CMakeLists.txt	2023-03-10 23:50:11.406149225 +0100
+@@ -386,6 +386,8 @@ target_link_libraries( zypp-core ${SIGCP
+ TARGET_LINK_LIBRARIES( zypp-core ${ZLIB_LIBRARY} )
+ message("URIL LIB  ${UTIL_LIBRARY}")
+ TARGET_LINK_LIBRARIES( zypp-core ${UTIL_LIBRARY} )
++#TARGET_LINK_LIBRARIES( zypp-core -labsl_hash -labsl_log_internal_message -labsl_log_internal_check_op)
++TARGET_LINK_LIBRARIES( zypp-core absl_hash absl_log_internal_message absl_log_internal_check_op)
+ 
+ IF (ENABLE_ZSTD_COMPRESSION)
+   TARGET_LINK_LIBRARIES( zypp-core ${ZSTD_LIBRARY})
