@@ -25,6 +25,7 @@ BuildRequires:	pkgconfig(libsolv)
 BuildRequires:	graphviz
 BuildRequires:	nginx
 BuildRequires:	fcgi-devel
+BuildRequires:	cmake(absl)
 BuildRequires:	pkgconfig(rpm)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(expat)
