@@ -1,0 +1,23 @@
+diff -up libzypp-17.31.8/zypp-core/Pathname.cc.omv~ libzypp-17.31.8/zypp-core/Pathname.cc
+--- libzypp-17.31.8/zypp-core/Pathname.cc.omv~	2023-04-18 19:26:20.020633339 +0200
++++ libzypp-17.31.8/zypp-core/Pathname.cc	2023-04-18 19:27:01.575929380 +0200
+@@ -10,6 +10,7 @@
+  *
+ */
+ #include <iostream>
++#include <limits.h>
+ 
+ #include <zypp-core/base/String.h>
+ #include <zypp-core/Pathname.h>
+diff -up libzypp-17.31.8/zypp/PurgeKernels.cc.omv~ libzypp-17.31.8/zypp/PurgeKernels.cc
+--- libzypp-17.31.8/zypp/PurgeKernels.cc.omv~	2023-04-18 19:27:18.070047031 +0200
++++ libzypp-17.31.8/zypp/PurgeKernels.cc	2023-04-18 19:27:25.696101454 +0200
+@@ -29,6 +29,8 @@
+ #include <functional>
+ #include <array>
+ 
++#include <limits.h>
++
+ #undef ZYPP_BASE_LOGGER_LOGGROUP
+ #define ZYPP_BASE_LOGGER_LOGGROUP "PurgeKernels"
+ 
