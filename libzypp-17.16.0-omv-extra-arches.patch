@@ -1,37 +1,37 @@
-diff -uraN libzypp-17.28.8/zypp/Arch.cc omv-libzypp-17.28.8/zypp/Arch.cc
---- libzypp-17.28.8/zypp/Arch.cc	2021-11-11 15:12:49.000000000 +0100
-+++ omv-libzypp-17.28.8/zypp/Arch.cc	2021-12-13 01:06:27.014407514 +0100
-@@ -161,6 +161,7 @@
-   DEF_BUILTIN( i686 );
-   DEF_BUILTIN( athlon );
-   DEF_BUILTIN( x86_64 );
+diff -up libzypp-17.31.11/zypp/Arch.cc.3~ libzypp-17.31.11/zypp/Arch.cc
+--- libzypp-17.31.11/zypp/Arch.cc.3~	2023-05-08 16:03:20.483373701 +0200
++++ libzypp-17.31.11/zypp/Arch.cc	2023-05-08 16:08:01.328533544 +0200
+@@ -164,6 +164,7 @@ namespace zypp
+   DEF_BUILTIN( x86_64_v2 );
+   DEF_BUILTIN( x86_64_v3 );
+   DEF_BUILTIN( x86_64_v4 );
 +  DEF_BUILTIN( znver1 );
  
    DEF_BUILTIN( pentium3 );
    DEF_BUILTIN( pentium4 );
-@@ -308,6 +313,7 @@
-         defCompatibleWith( a_i686(),		a_noarch(),a_i386(),a_i486(),a_i586() );
-         defCompatibleWith( a_athlon(),		a_noarch(),a_i386(),a_i486(),a_i586(),a_i686() );
-         defCompatibleWith( a_x86_64(),		a_noarch(),a_i386(),a_i486(),a_i586(),a_i686(),a_athlon() );
-+        defCompatibleWith( a_znver1(),		a_noarch(),a_i386(),a_i486(),a_i586(),a_i686(),a_athlon(),a_x86_64() );
+@@ -316,6 +317,7 @@ namespace zypp
+         defCompatibleWith( a_x86_64_v2(),	a_noarch(),a_i386(),a_i486(),a_i586(),a_i686(),a_athlon(),a_x86_64() );
+         defCompatibleWith( a_x86_64_v3(),	a_noarch(),a_i386(),a_i486(),a_i586(),a_i686(),a_athlon(),a_x86_64(),a_x86_64_v2() );
+         defCompatibleWith( a_x86_64_v4(),	a_noarch(),a_i386(),a_i486(),a_i586(),a_i686(),a_athlon(),a_x86_64(),a_x86_64_v2(),a_x86_64_v3() );
++	defCompatibleWith( a_znver1(),		a_noarch(),a_i386(),a_i486(),a_i586(),a_i686(),a_athlon(),a_x86_64(),a_x86_64_v2(),a_x86_64_v3() );
  
          defCompatibleWith( a_pentium3(),	a_noarch(),a_i386(),a_i486(),a_i586(),a_i686() );
          defCompatibleWith( a_pentium4(),	a_noarch(),a_i386(),a_i486(),a_i586(),a_i686(),a_pentium3() );
-diff -uraN libzypp-17.28.8/zypp/Arch.h omv-libzypp-17.28.8/zypp/Arch.h
---- libzypp-17.28.8/zypp/Arch.h	2021-11-11 15:12:49.000000000 +0100
-+++ omv-libzypp-17.28.8/zypp/Arch.h	2021-12-13 01:09:18.842401475 +0100
-@@ -170,6 +170,8 @@
+diff -up libzypp-17.31.11/zypp/Arch.h.3~ libzypp-17.31.11/zypp/Arch.h
+--- libzypp-17.31.11/zypp/Arch.h.3~	2023-05-08 16:03:20.483373701 +0200
++++ libzypp-17.31.11/zypp/Arch.h	2023-05-08 16:06:07.705658184 +0200
+@@ -170,6 +170,8 @@ namespace zypp
    extern const Arch Arch_pentium3;
  
    /** \relates Arch */
 +  extern const Arch Arch_znver1;
 +  /** \relates Arch */
-   extern const Arch Arch_x86_64;
+   extern const Arch Arch_x86_64_v4;
    /** \relates Arch */
-   extern const Arch Arch_athlon;
-diff -uraN libzypp-17.28.8/zypp/parser/yum/schema/common-inc.rng omv-libzypp-17.28.8/zypp/parser/yum/schema/common-inc.rng
---- libzypp-17.28.8/zypp/parser/yum/schema/common-inc.rng	2021-11-11 15:12:49.000000000 +0100
-+++ omv-libzypp-17.28.8/zypp/parser/yum/schema/common-inc.rng	2021-12-13 01:14:29.713390549 +0100
+   extern const Arch Arch_x86_64_v3;
+diff -up libzypp-17.31.11/zypp/parser/yum/schema/common-inc.rng.3~ libzypp-17.31.11/zypp/parser/yum/schema/common-inc.rng
+--- libzypp-17.31.11/zypp/parser/yum/schema/common-inc.rng.3~	2023-04-28 13:40:38.000000000 +0200
++++ libzypp-17.31.11/zypp/parser/yum/schema/common-inc.rng	2023-05-08 16:03:20.483373701 +0200
 @@ -97,6 +97,7 @@
        <value>x86_64</value>
        <value>pentium3</value>
