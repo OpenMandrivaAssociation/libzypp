@@ -1,14 +1,19 @@
 %define major 1722
-%define libname %mklibname zypp %{major}
+%define oldlibname %mklibname zypp 1722
+%define libname %mklibname zypp
 %define devname %mklibname zypp -d
+# gcc LTO sucks
 %define _disable_lto 1
+# libzypp-tui intentionally uses libzypp symbols without linking to it
+# (and libzypp-tui is created first)
+%define _disable_ld_no_undefined 1
 
 %global optflags %{optflags} -DPROTOBUF_USE_DLLS
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.31.11
-Release:	2
+Version:	17.31.18
+Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
@@ -53,6 +58,7 @@ management API.
 Summary:	Software management engine
 Group:		System/Libraries
 Requires:	%{name} = %{EVRD}
+%rename %{oldlibname}
 
 %description -n %{libname}
 Software management engine.

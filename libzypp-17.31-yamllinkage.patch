@@ -1,11 +1,12 @@
-diff -up libzypp-17.31.0/zypp/CMakeLists.txt.omv~ libzypp-17.31.0/zypp/CMakeLists.txt
---- libzypp-17.31.0/zypp/CMakeLists.txt.omv~	2022-08-26 19:24:30.670134243 +0200
-+++ libzypp-17.31.0/zypp/CMakeLists.txt	2022-08-26 19:25:01.787379997 +0200
-@@ -913,6 +913,7 @@ macro( ADDZYPPLIB LIBNAME )
+diff -up libzypp-17.31.18/zypp/CMakeLists.txt.4~ libzypp-17.31.18/zypp/CMakeLists.txt
+--- libzypp-17.31.18/zypp/CMakeLists.txt.4~	2023-08-11 14:00:14.679729214 +0200
++++ libzypp-17.31.18/zypp/CMakeLists.txt	2023-08-11 14:00:40.794994300 +0200
+@@ -912,7 +912,7 @@ macro( ADDZYPPLIB LIBNAME )
+   #TARGET_LINK_LIBRARIES(${LIBNAME} ${SIGNALS_LIBRARY})
    TARGET_LINK_LIBRARIES(${LIBNAME} ${Boost_THREAD_LIBRARY})
    TARGET_LINK_LIBRARIES(${LIBNAME} ${GPGME_PTHREAD_LIBRARIES})
-   target_link_libraries(${LIBNAME} ${YAML_CPP_LIBRARIES})
-+  target_link_libraries(${LIBNAME} -lyaml-cpp)
-   target_link_libraries(${LIBNAME} ${PROTOBUF_LITE_LIBRARIES})
+-  target_link_libraries(${LIBNAME} ${YAML_CPP_LIBRARIES})
++  target_link_libraries(${LIBNAME} ${YAML_CPP_LIBRARIES} -lyaml-cpp)
    TARGET_LINK_LIBRARIES(${LIBNAME} pthread )
  
+   IF ( UDEV_FOUND )
