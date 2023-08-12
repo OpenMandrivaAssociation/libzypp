@@ -22,6 +22,7 @@ Patch0:		libzypp-17.28.1-underlinking.patch
 Patch1:		libzypp-17.31.8-protobuf-implicit-deps.patch
 Patch2:		libzypp-17.16.0-omv-extra-arches.patch
 Patch3:		libzypp-17.31-yamllinkage.patch
+Patch4:		libzypp-17.31.18-boost-1.83.patch
 BuildRequires:	a2x
 BuildRequires:	asciidoc
 BuildRequires:	cmake
@@ -46,6 +47,7 @@ BuildRequires:	pkgconfig(yaml-cpp)
 BuildRequires:	pkgconfig(sigc++-2.0)
 BuildRequires:	pkgconfig(zck)
 BuildRequires:	pkgconfig(libzstd)
+BuildRequires:	pkgconfig(readline)
 Requires:	libsolv
 Recommends:	distro-release-repos
 

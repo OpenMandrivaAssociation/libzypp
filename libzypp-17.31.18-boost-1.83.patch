@@ -1,0 +1,11 @@
+diff -up libzypp-17.31.18/tools/DownloadFiles.cc.omv~ libzypp-17.31.18/tools/DownloadFiles.cc
+--- libzypp-17.31.18/tools/DownloadFiles.cc.omv~	2023-08-12 16:48:28.115198991 +0200
++++ libzypp-17.31.18/tools/DownloadFiles.cc	2023-08-12 16:48:33.838257667 +0200
+@@ -6,6 +6,7 @@
+ // - url: "https://dlmirror.foo/file2"
+ //   delta: "/path/to/file2"
+ 
++#define BOOST_TIMER_ENABLE_DEPRECATED 1
+ 
+ #include <zypp/MediaSetAccess.h>
+ #include <zypp/ZYppCallbacks.h>
