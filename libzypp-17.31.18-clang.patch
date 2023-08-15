@@ -1,0 +1,12 @@
+diff -up libzypp-17.31.18/zypp-tui/output/Out.h.omv~ libzypp-17.31.18/zypp-tui/output/Out.h
+--- libzypp-17.31.18/zypp-tui/output/Out.h.omv~	2023-08-15 14:27:21.116882202 +0200
++++ libzypp-17.31.18/zypp-tui/output/Out.h	2023-08-15 14:29:24.467176886 +0200
+@@ -447,7 +447,7 @@ public:
+   ZYPP_DECLARE_FLAGS(Type,TypeBit);
+ 
+   static constexpr Type TYPE_NONE	= TypeBit(0x00);
+-  static constexpr Type TYPE_ALL	= TypeBit(0xff);
++  static constexpr Type TYPE_ALL	= TypeBit(TYPE_NORMAL|TYPE_XML);
+ 
+   using PromptId = unsigned;
+ 
