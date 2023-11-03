@@ -10,8 +10,8 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.31.18
-Release:	3
+Version:	17.31.23
+Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
@@ -21,7 +21,6 @@ Patch1:		libzypp-17.31.8-protobuf-implicit-deps.patch
 Patch2:		libzypp-17.16.0-omv-extra-arches.patch
 Patch3:		libzypp-17.31-yamllinkage.patch
 Patch4:		libzypp-17.31.18-boost-1.83.patch
-Patch5:		https://github.com/bzeller/libzypp/commit/87983b269fba8a454c25902650cb6dc973602117.patch
 Patch6:		libzypp-17.31.18-clang.patch
 BuildRequires:	a2x
 BuildRequires:	asciidoc
