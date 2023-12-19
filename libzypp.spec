@@ -10,8 +10,8 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.31.23
-Release:	2
+Version:	17.31.25
+Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
