@@ -1,0 +1,12 @@
+diff -uraN libzypp-17.31.25/zypp/parser/xml/Reader.h omv-libzypp-17.31.25/zypp/parser/xml/Reader.h
+--- libzypp-17.31.25/zypp/parser/xml/Reader.h	2023-12-14 11:09:38.000000000 +0100
++++ omv-libzypp-17.31.25/zypp/parser/xml/Reader.h	2023-12-19 16:50:49.099954896 +0100
+@@ -19,7 +19,7 @@
+ #include <zypp/base/Function.h>
+ 
+ #include <zypp/parser/xml/Node.h>
+-
++#include <libxml/xmlmemory.h>
+ ///////////////////////////////////////////////////////////////////
+ namespace zypp
+ { /////////////////////////////////////////////////////////////////
