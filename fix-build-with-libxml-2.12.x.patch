@@ -1,3 +1,14 @@
+diff -uraN libzypp-17.31.25/zypp/parser/xml/Reader.cc omv-libzypp-17.31.25/zypp/parser/xml/Reader.cc
+--- libzypp-17.31.25/zypp/parser/xml/Reader.cc	2023-12-14 11:09:38.000000000 +0100
++++ omv-libzypp-17.31.25/zypp/parser/xml/Reader.cc	2023-12-19 17:04:44.318090876 +0100
+@@ -20,6 +20,7 @@
+ #include <zypp/base/String.h>
+ 
+ #include <zypp/parser/xml/Reader.h>
++#include <libxml/xmlmemory.h>
+ 
+ using std::endl;
+ 
 diff -uraN libzypp-17.31.25/zypp/parser/xml/Reader.h omv-libzypp-17.31.25/zypp/parser/xml/Reader.h
 --- libzypp-17.31.25/zypp/parser/xml/Reader.h	2023-12-14 11:09:38.000000000 +0100
 +++ omv-libzypp-17.31.25/zypp/parser/xml/Reader.h	2023-12-19 16:50:49.099954896 +0100
