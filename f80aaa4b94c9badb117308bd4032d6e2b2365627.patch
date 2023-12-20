@@ -1,0 +1,22 @@
+From f80aaa4b94c9badb117308bd4032d6e2b2365627 Mon Sep 17 00:00:00 2001
+From: Michael Andres <ma@suse.de>
+Date: Wed, 20 Dec 2023 12:33:30 +0100
+Subject: [PATCH] Fix to build with libxml 2.12.x (fixes #505)
+
+---
+ zypp/parser/xml/Reader.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/zypp/parser/xml/Reader.cc b/zypp/parser/xml/Reader.cc
+index 674ad0a818..35c1dc139f 100644
+--- a/zypp/parser/xml/Reader.cc
++++ b/zypp/parser/xml/Reader.cc
+@@ -50,7 +50,7 @@ namespace zypp
+ 
+ 
+       std::list<std::string> structuredErrors;
+-      void structuredErrorFunc( void * userData, xmlErrorPtr error )
++      void structuredErrorFunc( void * userData, const xmlErrorPtr error )
+       {
+         if ( error )
+         {
