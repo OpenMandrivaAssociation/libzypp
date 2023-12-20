@@ -22,7 +22,7 @@ Patch2:		libzypp-17.16.0-omv-extra-arches.patch
 Patch3:		libzypp-17.31-yamllinkage.patch
 Patch4:		libzypp-17.31.18-boost-1.83.patch
 Patch6:		libzypp-17.31.18-clang.patch
-Patch7:		fix-build-with-libxml-2.12.x.patch
+Patch7:		https://github.com/openSUSE/libzypp/commit/f80aaa4b94c9badb117308bd4032d6e2b2365627.patch
 BuildRequires:	a2x
 BuildRequires:	asciidoc
 BuildRequires:	cmake
