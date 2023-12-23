@@ -26,6 +26,7 @@ Patch6:		libzypp-17.31.18-clang.patch
 BuildRequires:	a2x
 BuildRequires:	asciidoc
 BuildRequires:	cmake
+BuildRequires:	gettext
 BuildRequires:	ninja
 BuildRequires:	doxygen
 BuildRequires:	boost-devel
