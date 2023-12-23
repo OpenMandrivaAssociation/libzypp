@@ -1,0 +1,12 @@
+diff -up libzypp-17.31.27/zypp/parser/xml/Reader.cc.omv~ libzypp-17.31.27/zypp/parser/xml/Reader.cc
+--- libzypp-17.31.27/zypp/parser/xml/Reader.cc.omv~	2023-12-23 20:10:04.769058675 +0100
++++ libzypp-17.31.27/zypp/parser/xml/Reader.cc	2023-12-23 20:15:57.163470746 +0100
+@@ -50,7 +50,7 @@ namespace zypp
+ 
+ 
+       std::list<std::string> structuredErrors;
+-      void structuredErrorFunc( void * userData, const xmlErrorPtr error )
++      void structuredErrorFunc( void * userData, const _xmlError * error )
+       {
+         if ( error )
+         {

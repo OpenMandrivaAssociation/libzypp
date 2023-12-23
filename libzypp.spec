@@ -10,8 +10,8 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.31.23
-Release:	2
+Version:	17.31.27
+Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
@@ -21,6 +21,7 @@ Patch1:		libzypp-17.31.8-protobuf-implicit-deps.patch
 Patch2:		libzypp-17.16.0-omv-extra-arches.patch
 Patch3:		libzypp-17.31-yamllinkage.patch
 Patch4:		libzypp-17.31.18-boost-1.83.patch
+Patch5:		libzypp-17.31.27-libxml-2.12.patch
 Patch6:		libzypp-17.31.18-clang.patch
 BuildRequires:	a2x
 BuildRequires:	asciidoc
@@ -83,6 +84,7 @@ Development files (Headers etc.) for %{name}.
 	-DENABLE_ZCHUNK_COMPRESSION:BOOL=ON \
 	-DENABLE_ZSTD_COMPRESSION:BOOL=ON \
 	-DEXPORT_NG_API:BOOL=ON \
+	-DVSFTPD=%{_bindir}/true \
 	-G Ninja
 %ninja_build
 
