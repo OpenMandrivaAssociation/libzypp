@@ -1,17 +1,16 @@
-%define major 1722
-%define oldlibname %mklibname zypp 1722
+%define major 1732
 %define libname %mklibname zypp
 %define devname %mklibname zypp -d
 # libzypp-tui intentionally uses libzypp symbols without linking to it
 # (and libzypp-tui is created first)
 %define _disable_ld_no_undefined 1
 
-%global optflags %{optflags} -DPROTOBUF_USE_DLLS
+%global optflags %{optflags} -DPROTOBUF_USE_DLLS -DLIBSOLV_SOLVABLE_PREPEND_DEP
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.31.27
-Release:	2
+Version:	17.32.0
+Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
@@ -21,7 +20,7 @@ Patch1:		libzypp-17.31.8-protobuf-implicit-deps.patch
 Patch2:		libzypp-17.16.0-omv-extra-arches.patch
 Patch3:		libzypp-17.31-yamllinkage.patch
 Patch4:		libzypp-17.31.18-boost-1.83.patch
-Patch5:		libzypp-17.31.27-libxml-2.12.patch
+Patch5:		libzypp-17.32.0-c++20.patch
 Patch6:		libzypp-17.31.18-clang.patch
 BuildRequires:	a2x
 BuildRequires:	asciidoc
@@ -61,7 +60,6 @@ management API.
 Summary:	Software management engine
 Group:		System/Libraries
 Requires:	%{name} = %{EVRD}
-%rename %{oldlibname}
 
 %description -n %{libname}
 Software management engine.
@@ -77,6 +75,7 @@ Development files (Headers etc.) for %{name}.
 
 %prep
 %autosetup -p1
+find . -name CMakeLists.txt -o -name "*.cmake" |xargs sed -i -e 's,CXX_STANDARD 17,CXX_STANDARD 20,g'
 
 %build
 %cmake \
