@@ -21,7 +21,7 @@ Patch1:		libzypp-17.31.8-protobuf-implicit-deps.patch
 Patch2:		libzypp-17.16.0-omv-extra-arches.patch
 Patch3:		libzypp-17.31-yamllinkage.patch
 Patch4:		libzypp-17.31.18-boost-1.83.patch
-Patch5:		libzypp-17.31.27-libxml-2.12.patch
+#Patch5:		libzypp-17.31.27-libxml-2.12.patch
 Patch6:		libzypp-17.31.18-clang.patch
 BuildRequires:	a2x
 BuildRequires:	asciidoc
