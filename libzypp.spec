@@ -1,4 +1,4 @@
-%define major 1732
+%define major 1735
 %define libname %mklibname zypp
 %define devname %mklibname zypp -d
 # libzypp-tui intentionally uses libzypp symbols without linking to it
@@ -9,13 +9,12 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.32.0
-Release:	3
+Version:	17.35.8
+Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
-Patch0:		libzypp-17.28.1-underlinking.patch
 Patch1:		libzypp-17.31.8-protobuf-implicit-deps.patch
 Patch2:		libzypp-17.16.0-omv-extra-arches.patch
 Patch3:		libzypp-17.31-yamllinkage.patch
@@ -31,7 +30,7 @@ BuildRequires:	doxygen
 BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libsolv)
 BuildRequires:	graphviz
-BuildRequires:	(nginx or nginx-quic)
+BuildRequires:	nginx
 BuildRequires:	fcgi-devel
 BuildRequires:	cmake(absl)
 BuildRequires:	pkgconfig(rpm)
@@ -75,7 +74,7 @@ Development files (Headers etc.) for %{name}.
 
 %prep
 %autosetup -p1
-find . -name CMakeLists.txt -o -name "*.cmake" |xargs sed -i -e 's,CXX_STANDARD 17,CXX_STANDARD 20,g'
+#find . -name CMakeLists.txt -o -name "*.cmake" |xargs sed -i -e 's,CXX_STANDARD 17,CXX_STANDARD 20,g'
 
 %build
 %cmake \
@@ -114,5 +113,6 @@ ln -s ../yum.repos.d %{buildroot}/%{_sysconfdir}/zypp/repos.d
 %files -n %{devname}
 %{_includedir}/*
 %{_libdir}/*.so
+%{_libdir}/*.a
 %{_libdir}/pkgconfig/*
 %{_datadir}/cmake/Modules/*

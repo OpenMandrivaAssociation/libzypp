@@ -1,12 +1,12 @@
-diff -up libzypp-17.31.23/zypp/CMakeLists.txt.4~ libzypp-17.31.23/zypp/CMakeLists.txt
---- libzypp-17.31.23/zypp/CMakeLists.txt.4~	2023-11-03 01:40:05.146613857 +0100
-+++ libzypp-17.31.23/zypp/CMakeLists.txt	2023-11-03 01:41:39.042313243 +0100
-@@ -912,7 +912,7 @@ macro( ADDZYPPLIB LIBNAME )
-   #TARGET_LINK_LIBRARIES(${LIBNAME} ${SIGNALS_LIBRARY})
-   TARGET_LINK_LIBRARIES(${LIBNAME} ${Boost_THREAD_LIBRARY})
-   TARGET_LINK_LIBRARIES(${LIBNAME} ${GPGME_LIBRARIES})
--  target_link_libraries(${LIBNAME} ${YAML_CPP_LIBRARIES})
-+  target_link_libraries(${LIBNAME} ${YAML_CPP_LIBRARIES} -lyaml-cpp)
-   TARGET_LINK_LIBRARIES(${LIBNAME} pthread )
+diff -up libzypp-17.35.8/zypp/CMakeLists.txt.3~ libzypp-17.35.8/zypp/CMakeLists.txt
+--- libzypp-17.35.8/zypp/CMakeLists.txt.3~	2024-08-04 12:30:03.761510202 +0200
++++ libzypp-17.35.8/zypp/CMakeLists.txt	2024-08-04 12:30:23.233722124 +0200
+@@ -1006,7 +1006,7 @@ function(add_zypp_lib target shared_or_s
+   TARGET_LINK_LIBRARIES( ${target} ${_link_mode} ${GETTEXT_LIBRARIES} )
+   TARGET_LINK_LIBRARIES( ${target} ${_link_mode} ${Boost_THREAD_LIBRARY})
+   TARGET_LINK_LIBRARIES( ${target} ${_link_mode} ${GPGME_LIBRARIES})
+-  target_link_libraries( ${target} ${_link_mode} ${YAML_CPP_LIBRARIES})
++  target_link_libraries( ${target} ${_link_mode} ${YAML_CPP_LIBRARIES} -lyaml-cpp)
  
    IF ( UDEV_FOUND )
+     TARGET_LINK_LIBRARIES( ${target} ${_link_mode} ${UDEV_LIBRARY} )
