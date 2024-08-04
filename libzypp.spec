@@ -47,7 +47,7 @@ BuildRequires:	pkgconfig(sigc++-2.0)
 BuildRequires:	pkgconfig(zck)
 BuildRequires:	pkgconfig(libzstd)
 BuildRequires:	pkgconfig(readline)
-BuildRequires:	pkgconfig(libbz2)
+BuildRequires:	pkgconfig(bzip2)
 Requires:	libsolv
 Recommends:	distro-release-repos
 
