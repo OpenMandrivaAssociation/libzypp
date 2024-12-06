@@ -10,7 +10,7 @@
 Summary:	Software management engine
 Name:		libzypp
 Version:	17.35.14
-Release:	1
+Release:	2
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
@@ -21,6 +21,7 @@ Patch3:		libzypp-17.31-yamllinkage.patch
 Patch4:		libzypp-17.31.18-boost-1.83.patch
 Patch5:		libzypp-17.32.0-c++20.patch
 Patch6:		libzypp-17.31.18-clang.patch
+Patch7:		libzypp-17.35.14-rpmdb-sqlite.patch
 BuildRequires:	a2x
 BuildRequires:	asciidoc
 BuildRequires:	cmake

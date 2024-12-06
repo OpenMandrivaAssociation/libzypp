@@ -1,0 +1,12 @@
+diff -up libzypp-17.35.14/zypp/target/rpm/librpmDb.cc.omv~ libzypp-17.35.14/zypp/target/rpm/librpmDb.cc
+--- libzypp-17.35.14/zypp/target/rpm/librpmDb.cc.omv~	2024-12-06 02:23:33.950677854 +0100
++++ libzypp-17.35.14/zypp/target/rpm/librpmDb.cc	2024-12-06 02:24:13.193633228 +0100
+@@ -71,7 +71,7 @@ namespace rpm
+     inline bool dbExists( const Pathname & root_r, const Pathname & dbPath_r )
+     {
+       Pathname dbdir { root_r / sanitizedDbPath( root_r, dbPath_r ) };
+-      return PathInfo(dbdir).isDir() && ( PathInfo(dbdir/"Packages").isFile() || PathInfo(dbdir/"Packages.db").isFile() );
++      return PathInfo(dbdir).isDir() && ( PathInfo(dbdir/"rpmdb.sqlite").isFile() || PathInfo(dbdir/"Packages").isFile() || PathInfo(dbdir/"Packages.db").isFile() );
+     }
+ 
+   } // namespace internal
