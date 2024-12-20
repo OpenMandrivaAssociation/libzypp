@@ -5,23 +5,16 @@
 # (and libzypp-tui is created first)
 %define _disable_ld_no_undefined 1
 
-%global optflags %{optflags} -DPROTOBUF_USE_DLLS -DLIBSOLV_SOLVABLE_PREPEND_DEP
+%global optflags %{optflags} -DPROTOBUF_USE_DLLS -DLIBSOLV_SOLVABLE_PREPEND_DEP -DBOOST_POINTERS_NO_IOSTREAM
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.35.14
-Release:	3
+Version:	17.35.16
+Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
 Url:		https://github.com/openSUSE/libzypp
-Patch1:		libzypp-17.31.8-protobuf-implicit-deps.patch
-Patch2:		libzypp-17.16.0-omv-extra-arches.patch
-Patch3:		libzypp-17.31-yamllinkage.patch
-Patch4:		libzypp-17.31.18-boost-1.83.patch
-Patch5:		libzypp-17.32.0-c++20.patch
-Patch6:		libzypp-17.31.18-clang.patch
-Patch7:		libzypp-17.35.14-rpmdb-sqlite.patch
 BuildRequires:	a2x
 BuildRequires:	asciidoc
 BuildRequires:	cmake
@@ -51,6 +44,17 @@ BuildRequires:	pkgconfig(readline)
 BuildRequires:	pkgconfig(bzip2)
 Requires:	libsolv
 Recommends:	distro-release-repos
+
+%patchlist
+libzypp-17.31.8-protobuf-implicit-deps.patch
+libzypp-17.16.0-omv-extra-arches.patch
+libzypp-17.31-yamllinkage.patch
+libzypp-17.31.18-boost-1.83.patch
+libzypp-17.32.0-c++20.patch
+libzypp-17.31.18-clang.patch
+https://github.com/openSUSE/libzypp/pull/586/commits/902c831606f8dd04d4967187701c79bdc8e20508.patch
+https://github.com/openSUSE/libzypp/pull/586/commits/263600954c4a8f8d606d7592a7f49f2b9df746ed.patch
+https://github.com/openSUSE/libzypp/pull/586/commits/bd828d0f4bfc6cc8043687872656558d06cc7b10.patch
 
 %description
 ZYpp is a Linux software management engine that powers products like
