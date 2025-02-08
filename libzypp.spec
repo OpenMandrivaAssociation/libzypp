@@ -9,7 +9,7 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.35.16
+Version:	17.35.19
 Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
@@ -121,4 +121,4 @@ ln -s ../yum.repos.d %{buildroot}/%{_sysconfdir}/zypp/repos.d
 %{_libdir}/*.so
 %{_libdir}/*.a
 %{_libdir}/pkgconfig/*
-%{_datadir}/cmake/Modules/*
+%{_libdir}/cmake/Zypp/
