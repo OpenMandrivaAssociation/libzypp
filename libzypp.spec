@@ -121,4 +121,4 @@ ln -s ../yum.repos.d %{buildroot}/%{_sysconfdir}/zypp/repos.d
 %{_libdir}/*.so
 %{_libdir}/*.a
 %{_libdir}/pkgconfig/*
-%{_datadir}/cmake/Modules/*
+#{_datadir}/cmake/Modules/*
