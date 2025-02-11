@@ -1,18 +1,34 @@
-From 263600954c4a8f8d606d7592a7f49f2b9df746ed Mon Sep 17 00:00:00 2001
+From 213bb814d0332b33fdb5e6ad1a164377419699e3 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Christoph=20Gr=C3=BCninger?= <foss@grueninger.de>
 Date: Fri, 11 Oct 2024 08:14:39 +0200
 Subject: [PATCH] Use std::function instead of boost::function
 
 ---
- zypp-core/base/Function.h    | 28 +++++++---------------------
- zypp-core/base/Iterator.h    |  1 -
- zypp/KeyManager.cc           |  6 +++---
- zypp/PoolItemBest.h          |  2 +-
- zypp/ZConfig.cc              |  2 +-
- zypp/parser/ParserProgress.h |  6 +++---
- zypp/target/TargetImpl.cc    |  4 ++--
- 7 files changed, 17 insertions(+), 32 deletions(-)
+ zypp-common/KeyManager.cc |  6 +++---
+ zypp-core/base/Function.h | 28 +++++++---------------------
+ zypp-core/base/Iterator.h |  1 -
+ zypp/PoolItemBest.h       |  2 +-
+ zypp/ZConfig.cc           |  2 +-
+ zypp/target/TargetImpl.cc |  4 ++--
+ 6 files changed, 14 insertions(+), 29 deletions(-)
 
+diff --git a/zypp-common/KeyManager.cc b/zypp-common/KeyManager.cc
+index bd27ffb22f..928953862f 100644
+--- a/zypp-common/KeyManager.cc
++++ b/zypp-common/KeyManager.cc
+@@ -51,9 +51,9 @@ namespace zypp
+     }
+ 
+     //using boost::interprocess pointer because it allows a custom deleter
+-    using GpgmeDataPtr = boost::interprocess::scoped_ptr<gpgme_data, boost::function<void (gpgme_data_t)>>;
+-    using GpgmeKeyPtr = boost::interprocess::scoped_ptr<_gpgme_key, boost::function<void (gpgme_key_t)>>;
+-    using FILEPtr = boost::interprocess::scoped_ptr<FILE, boost::function<int (FILE *)>>;
++    using GpgmeDataPtr = boost::interprocess::scoped_ptr<gpgme_data, std::function<void (gpgme_data_t)>>;
++    using GpgmeKeyPtr = boost::interprocess::scoped_ptr<_gpgme_key, std::function<void (gpgme_key_t)>>;
++    using FILEPtr = boost::interprocess::scoped_ptr<FILE, std::function<int (FILE *)>>;
+ 
+     struct GpgmeErr
+     {
 diff --git a/zypp-core/base/Function.h b/zypp-core/base/Function.h
 index 48d672a3d9..7438777ab0 100644
 --- a/zypp-core/base/Function.h
@@ -69,23 +85,6 @@ index 791973c61a..d78087743b 100644
  #include <boost/iterator/filter_iterator.hpp>
  #include <boost/iterator/transform_iterator.hpp>
  #include <boost/iterator/function_output_iterator.hpp>
-diff --git a/zypp/KeyManager.cc b/zypp/KeyManager.cc
-index c276fea5f3..7ebb9651f1 100644
---- a/zypp/KeyManager.cc
-+++ b/zypp/KeyManager.cc
-@@ -50,9 +50,9 @@ namespace zypp
-     }
- 
-     //using boost::interprocess pointer because it allows a custom deleter
--    using GpgmeDataPtr = boost::interprocess::scoped_ptr<gpgme_data, boost::function<void (gpgme_data_t)>>;
--    using GpgmeKeyPtr = boost::interprocess::scoped_ptr<_gpgme_key, boost::function<void (gpgme_key_t)>>;
--    using FILEPtr = boost::interprocess::scoped_ptr<FILE, boost::function<int (FILE *)>>;
-+    using GpgmeDataPtr = boost::interprocess::scoped_ptr<gpgme_data, std::function<void (gpgme_data_t)>>;
-+    using GpgmeKeyPtr = boost::interprocess::scoped_ptr<_gpgme_key, std::function<void (gpgme_key_t)>>;
-+    using FILEPtr = boost::interprocess::scoped_ptr<FILE, std::function<int (FILE *)>>;
- 
-     struct GpgmeErr
-     {
 diff --git a/zypp/PoolItemBest.h b/zypp/PoolItemBest.h
 index 0dfff9a06f..cd5f7932d9 100644
 --- a/zypp/PoolItemBest.h
@@ -113,7 +112,7 @@ index c3558542c5..9196787a8c 100644
                    );
                    repoRefreshLocales.insert( make_transform_iterator( tmp.begin(), transform ),
 diff --git a/zypp/target/TargetImpl.cc b/zypp/target/TargetImpl.cc
-index 1960c8a3a8..1405f7bbc8 100644
+index c9f03d4e79..2989d5b76f 100644
 --- a/zypp/target/TargetImpl.cc
 +++ b/zypp/target/TargetImpl.cc
 @@ -888,8 +888,8 @@ namespace zypp

@@ -1,4 +1,4 @@
-From 902c831606f8dd04d4967187701c79bdc8e20508 Mon Sep 17 00:00:00 2001
+From e414409cde635970675b2a0fa33ea56c3426f384 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Christoph=20Gr=C3=BCninger?= <foss@grueninger.de>
 Date: Fri, 11 Oct 2024 07:40:50 +0200
 Subject: [PATCH] Replace BOOST_STATIC_ASSERT and boost_is_integral by C++11's

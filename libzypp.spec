@@ -5,11 +5,11 @@
 # (and libzypp-tui is created first)
 %define _disable_ld_no_undefined 1
 
-%global optflags %{optflags} -DPROTOBUF_USE_DLLS -DLIBSOLV_SOLVABLE_PREPEND_DEP -DBOOST_POINTERS_NO_IOSTREAM
+%global optflags %{optflags} -DPROTOBUF_USE_DLLS -DLIBSOLV_SOLVABLE_PREPEND_DEP
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.35.19
+Version:	17.36.0
 Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
@@ -50,11 +50,10 @@ libzypp-17.31.8-protobuf-implicit-deps.patch
 libzypp-17.16.0-omv-extra-arches.patch
 libzypp-17.31-yamllinkage.patch
 libzypp-17.31.18-boost-1.83.patch
-libzypp-17.32.0-c++20.patch
 libzypp-17.31.18-clang.patch
-https://github.com/openSUSE/libzypp/pull/586/commits/902c831606f8dd04d4967187701c79bdc8e20508.patch
-https://github.com/openSUSE/libzypp/pull/586/commits/263600954c4a8f8d606d7592a7f49f2b9df746ed.patch
-https://github.com/openSUSE/libzypp/pull/586/commits/bd828d0f4bfc6cc8043687872656558d06cc7b10.patch
+https://github.com/openSUSE/libzypp/pull/586/commits/e414409cde635970675b2a0fa33ea56c3426f384.patch
+https://github.com/openSUSE/libzypp/pull/586/commits/213bb814d0332b33fdb5e6ad1a164377419699e3.patch
+https://github.com/openSUSE/libzypp/pull/586/commits/9d626e55be63917146b53f46f5c9f1d9bf29ed00.patch
 
 %description
 ZYpp is a Linux software management engine that powers products like

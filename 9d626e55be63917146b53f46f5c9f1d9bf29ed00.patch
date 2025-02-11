@@ -1,4 +1,4 @@
-From bd828d0f4bfc6cc8043687872656558d06cc7b10 Mon Sep 17 00:00:00 2001
+From 9d626e55be63917146b53f46f5c9f1d9bf29ed00 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Christoph=20Gr=C3=BCninger?= <foss@grueninger.de>
 Date: Fri, 11 Oct 2024 08:14:55 +0200
 Subject: [PATCH] Use noexcept instad of BOOST_NOEXCEPT
@@ -8,10 +8,10 @@ Subject: [PATCH] Use noexcept instad of BOOST_NOEXCEPT
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/zypp/ZYpp.h b/zypp/ZYpp.h
-index af376a789..557b7efd8 100644
+index 7129a3c25..c7387f920 100644
 --- a/zypp/ZYpp.h
 +++ b/zypp/ZYpp.h
-@@ -163,7 +163,7 @@ namespace zypp
+@@ -162,7 +162,7 @@ namespace zypp
      explicit ZYpp( const Impl_Ptr & impl_r );
    private:
      /** Deleted via shared_ptr */

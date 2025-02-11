@@ -1,10 +1,10 @@
-diff -up libzypp-17.35.8/zypp/CMakeLists.txt.3~ libzypp-17.35.8/zypp/CMakeLists.txt
---- libzypp-17.35.8/zypp/CMakeLists.txt.3~	2024-08-04 12:30:03.761510202 +0200
-+++ libzypp-17.35.8/zypp/CMakeLists.txt	2024-08-04 12:30:23.233722124 +0200
-@@ -1006,7 +1006,7 @@ function(add_zypp_lib target shared_or_s
+diff -up libzypp-17.36.0/zypp/CMakeLists.txt.3~ libzypp-17.36.0/zypp/CMakeLists.txt
+--- libzypp-17.36.0/zypp/CMakeLists.txt.3~	2025-02-11 22:27:25.515182575 +0100
++++ libzypp-17.36.0/zypp/CMakeLists.txt	2025-02-11 22:28:36.537298196 +0100
+@@ -1000,7 +1000,7 @@ function(add_zypp_lib target shared_or_s
+   TARGET_LINK_LIBRARIES( ${target} ${_link_mode} ${RPM_LIBRARY} ${RPMIO_LIBRARY} )
    TARGET_LINK_LIBRARIES( ${target} ${_link_mode} ${GETTEXT_LIBRARIES} )
    TARGET_LINK_LIBRARIES( ${target} ${_link_mode} ${Boost_THREAD_LIBRARY})
-   TARGET_LINK_LIBRARIES( ${target} ${_link_mode} ${GPGME_LIBRARIES})
 -  target_link_libraries( ${target} ${_link_mode} ${YAML_CPP_LIBRARIES})
 +  target_link_libraries( ${target} ${_link_mode} ${YAML_CPP_LIBRARIES} -lyaml-cpp)
  
