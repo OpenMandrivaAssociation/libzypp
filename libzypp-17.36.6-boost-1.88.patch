@@ -1,0 +1,11 @@
+diff -up libzypp-17.36.6/zypp/sat/detail/PoolImpl.cc.omv~ libzypp-17.36.6/zypp/sat/detail/PoolImpl.cc
+--- libzypp-17.36.6/zypp/sat/detail/PoolImpl.cc.omv~	2025-04-12 20:40:03.049395776 +0200
++++ libzypp-17.36.6/zypp/sat/detail/PoolImpl.cc	2025-04-12 20:41:38.262251658 +0200
+@@ -11,6 +11,7 @@
+ */
+ #include <iostream>
+ #include <fstream>
++#include <boost/mpl/assert.hpp>
+ #include <boost/mpl/int.hpp>
+ 
+ #include <zypp/base/Easy.h>

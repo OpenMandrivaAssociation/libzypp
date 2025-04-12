@@ -9,7 +9,7 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.36.5
+Version:	17.36.6
 Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
@@ -55,6 +55,7 @@ libzypp-workaround-threaded-libxml.patch
 https://github.com/openSUSE/libzypp/pull/586/commits/e414409cde635970675b2a0fa33ea56c3426f384.patch
 https://github.com/openSUSE/libzypp/pull/586/commits/213bb814d0332b33fdb5e6ad1a164377419699e3.patch
 https://github.com/openSUSE/libzypp/pull/586/commits/9d626e55be63917146b53f46f5c9f1d9bf29ed00.patch
+libzypp-17.36.6-boost-1.88.patch
 
 %description
 ZYpp is a Linux software management engine that powers products like
