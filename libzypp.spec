@@ -25,6 +25,7 @@ BuildRequires:	boost-devel
 BuildRequires:	pkgconfig(libsolv)
 BuildRequires:	graphviz
 BuildRequires:	nginx
+BuildRequires:	squid
 BuildRequires:	fcgi-devel
 BuildRequires:	cmake(absl)
 BuildRequires:	pkgconfig(rpm)
