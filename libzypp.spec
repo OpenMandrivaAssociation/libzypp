@@ -46,7 +46,7 @@ Requires:	libsolv
 Recommends:	distro-release-repos
 
 %patchlist
-libzypp-17.31.8-protobuf-implicit-deps.patch
+#libzypp-17.31.8-protobuf-implicit-deps.patch
 libzypp-17.16.0-omv-extra-arches.patch
 libzypp-17.31-yamllinkage.patch
 libzypp-17.31.18-boost-1.83.patch
