@@ -1,0 +1,56 @@
+diff -up libzypp-17.37.18/zypp-logic/zypp-core/parser/json.cc.omv~ libzypp-17.37.18/zypp-logic/zypp-core/parser/json.cc
+diff -up libzypp-17.37.18/zypp-logic/zypp-core/parser/json.h.omv~ libzypp-17.37.18/zypp-logic/zypp-core/parser/json.h
+--- libzypp-17.37.18/zypp-logic/zypp-core/parser/json.h.omv~	2025-12-13 06:38:08.787047784 +0100
++++ libzypp-17.37.18/zypp-logic/zypp-core/parser/json.h	2025-12-13 06:38:41.397092017 +0100
+@@ -13,11 +13,11 @@
+ #define ZYPP_CORE_PARSER_JSON_PARSER_H
+ 
+ #include <optional>
++#include "json/JsonValue.h"
+ #include <zypp-core/parser/parseexception.h>
+ #include <zypp-core/base/inputstream.h>
+ #include <zypp-core/base/NonCopyable.h>
+ #include <zypp-core/ng/pipelines/expected.h>
+-#include "json/JsonValue.h"
+ 
+ namespace zypp::json {
+ 
+diff -up libzypp-17.37.18/zypp-logic/zypp/zypp.cmake.omv~ libzypp-17.37.18/zypp-logic/zypp/zypp.cmake
+--- libzypp-17.37.18/zypp-logic/zypp/zypp.cmake.omv~	2025-12-13 06:22:15.279819992 +0100
++++ libzypp-17.37.18/zypp-logic/zypp/zypp.cmake	2025-12-13 06:22:27.904458477 +0100
+@@ -818,15 +818,9 @@ function(zypp_add_zypp_target)
+   target_include_directories( ${arg_TARGETNAME} PUBLIC ${RPM_INCLUDE_DIR}/rpm)
+ 
+   # rpm verify function and callback states were introduced in rpm-4.15
+-  if( RPM_LIB_VER VERSION_GREATER_EQUAL "4.15.0"  AND  RPM_LIB_VER VERSION_LESS "5.0.0")
++  if( RPM_LIB_VER VERSION_GREATER_EQUAL "4.15.0")
+     target_compile_definitions( ${arg_TARGETNAME} PUBLIC HAVE_RPM_VERIFY_TRANSACTION_STEP )
+   endif()
+ 
+-  if( RPM_LIB_VER VERSION_GREATER_EQUAL "5.0.0" )
+-        MESSAGE( STATUS "rpm found: enable rpm-4 compat interface." )
+-        target_compile_definitions( ${arg_TARGETNAME} PUBLIC _RPM_5)
+-  endif ()
+-
+-
+ endfunction()
+ 
+diff -up libzypp-17.37.18/zypp/tools/zypp-rpm/CMakeLists.txt.omv~ libzypp-17.37.18/zypp/tools/zypp-rpm/CMakeLists.txt
+--- libzypp-17.37.18/zypp/tools/zypp-rpm/CMakeLists.txt.omv~	2025-12-13 06:21:10.161380511 +0100
++++ libzypp-17.37.18/zypp/tools/zypp-rpm/CMakeLists.txt	2025-12-13 06:21:43.973967076 +0100
+@@ -13,14 +13,9 @@ ELSE ( NOT RPM_FOUND)
+   INCLUDE_DIRECTORIES(${RPM_INCLUDE_DIR}/rpm)
+ 
+   # rpm verify function and callback states were introduced in rpm-4.15
+-  if( RPM_LIB_VER VERSION_GREATER_EQUAL "4.15.0"  AND  RPM_LIB_VER VERSION_LESS "5.0.0")
++  if( RPM_LIB_VER VERSION_GREATER_EQUAL "4.15.0")
+     ADD_DEFINITIONS( -DHAVE_RPM_VERIFY_TRANSACTION_STEP )
+   endif()
+-
+-  if( RPM_LIB_VER VERSION_GREATER_EQUAL "5.0.0" )
+-        MESSAGE( STATUS "rpm found: enable rpm-4 compat interface." )
+-        ADD_DEFINITIONS(-D_RPM_5)
+-  endif ()
+ ENDIF( NOT RPM_FOUND)
+ 
+ SET( SOURCES

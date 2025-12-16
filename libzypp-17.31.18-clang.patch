@@ -1,6 +1,6 @@
-diff -up libzypp-17.31.23/zypp-tui/output/Out.h.6~ libzypp-17.31.23/zypp-tui/output/Out.h
---- libzypp-17.31.23/zypp-tui/output/Out.h.6~	2023-11-03 01:45:04.974918781 +0100
-+++ libzypp-17.31.23/zypp-tui/output/Out.h	2023-11-03 01:46:26.060572020 +0100
+diff -up libzypp-17.31.23/zypp/zypp-tui/output/Out.h.6~ libzypp-17.31.23/zypp/zypp-tui/output/Out.h
+--- libzypp-17.31.23/zypp/zypp-tui/output/Out.h.6~	2023-11-03 01:45:04.974918781 +0100
++++ libzypp-17.31.23/zypp/zypp-tui/output/Out.h	2023-11-03 01:46:26.060572020 +0100
 @@ -447,7 +447,7 @@ public:
    ZYPP_DECLARE_FLAGS(Type,TypeBit);
  

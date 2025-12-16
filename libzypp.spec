@@ -9,8 +9,8 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.36.6
-Release:	3
+Version:	17.37.18
+Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
 Group:		System/Libraries
@@ -46,16 +46,14 @@ Requires:	libsolv
 Recommends:	distro-release-repos
 
 %patchlist
-libzypp-17.31.8-protobuf-implicit-deps.patch
+#libzypp-17.31.8-protobuf-implicit-deps.patch
 libzypp-17.16.0-omv-extra-arches.patch
-libzypp-17.31-yamllinkage.patch
+#libzypp-17.31-yamllinkage.patch
 libzypp-17.31.18-boost-1.83.patch
 libzypp-17.31.18-clang.patch
 libzypp-workaround-threaded-libxml.patch
-https://github.com/openSUSE/libzypp/pull/586/commits/e414409cde635970675b2a0fa33ea56c3426f384.patch
-https://github.com/openSUSE/libzypp/pull/586/commits/213bb814d0332b33fdb5e6ad1a164377419699e3.patch
-https://github.com/openSUSE/libzypp/pull/586/commits/9d626e55be63917146b53f46f5c9f1d9bf29ed00.patch
-libzypp-17.36.6-boost-1.88.patch
+libzypp-rpm6-is-not-rpm5.patch
+libzypp-17.37.18-linkage.patch
 
 %description
 ZYpp is a Linux software management engine that powers products like
@@ -81,7 +79,7 @@ Development files (Headers etc.) for %{name}.
 
 %prep
 %autosetup -p1
-#find . -name CMakeLists.txt -o -name "*.cmake" |xargs sed -i -e 's,CXX_STANDARD 17,CXX_STANDARD 20,g'
+find . -name CMakeLists.txt -o -name "*.cmake" |xargs sed -i -e 's,CXX_STANDARD 20,CXX_STANDARD 17,g'
 
 %build
 %cmake \
@@ -90,7 +88,7 @@ Development files (Headers etc.) for %{name}.
 	-DENABLE_ZCHUNK_COMPRESSION:BOOL=ON \
 	-DENABLE_ZSTD_COMPRESSION:BOOL=ON \
 	-DEXPORT_NG_API:BOOL=ON \
-	-DVSFTPD=%{_bindir}/true \
+	-DDISABLE_MEDIABACKEND_TESTS:BOOL=ON \
 	-G Ninja
 %ninja_build
 

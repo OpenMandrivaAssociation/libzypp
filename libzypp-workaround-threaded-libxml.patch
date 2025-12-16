@@ -1,6 +1,6 @@
-diff -up libzypp-17.36.5/zypp/misc/HelixHelpers.h.omv~ libzypp-17.36.5/zypp/misc/HelixHelpers.h
---- libzypp-17.36.5/zypp/misc/HelixHelpers.h.omv~	2025-03-28 15:07:18.040800778 +0100
-+++ libzypp-17.36.5/zypp/misc/HelixHelpers.h	2025-03-28 15:14:47.927063829 +0100
+diff -up libzypp-17.36.5/zypp-logic/zypp/misc/HelixHelpers.h.omv~ libzypp-17.36.5/zypp-logic/zypp/misc/HelixHelpers.h
+--- libzypp-17.36.5/zypp-logic/zypp/misc/HelixHelpers.h.omv~	2025-03-28 15:07:18.040800778 +0100
++++ libzypp-17.36.5/zypp-logic/zypp/misc/HelixHelpers.h	2025-03-28 15:14:47.927063829 +0100
 @@ -19,6 +19,8 @@
  
  #include <libxml/parser.h>

@@ -1,0 +1,12 @@
+diff -up libzypp-17.37.18/zyppng/lib/CMakeLists.txt.omv~ libzypp-17.37.18/zyppng/lib/CMakeLists.txt
+--- libzypp-17.37.18/zyppng/lib/CMakeLists.txt.omv~	2025-12-16 00:22:18.986046355 +0100
++++ libzypp-17.37.18/zyppng/lib/CMakeLists.txt	2025-12-16 00:26:15.960485692 +0100
+@@ -23,6 +23,8 @@ ADD_LIBRARY( ${target} ${shared_or_stati
+ SET_TARGET_PROPERTIES ( ${target} PROPERTIES VERSION "${LIBZYPP_VERSION_INFO}" )
+ SET_TARGET_PROPERTIES ( ${target} PROPERTIES SOVERSION "${LIBZYPP_SOVERSION_INFO}" )
+ 
++target_link_libraries( ${target} PUBLIC zypp)
++
+ target_link_libraries( ${target} PRIVATE zyppng_lib_compiler_flags )
+ #target_link_libraries( ${target} PRIVATE zyppng-objlib )
+ target_link_libraries( ${target} PRIVATE commit-proto-obj )
