@@ -9,7 +9,7 @@
 
 Summary:	Software management engine
 Name:		libzypp
-Version:	17.37.18
+Version:	17.38.7
 Release:	1
 Source0:	https://github.com/openSUSE/libzypp/archive/%{version}/%{name}-%{version}.tar.gz
 License:	GPLv2+ with extra permission to link to OpenSSL
@@ -52,7 +52,6 @@ libzypp-17.16.0-omv-extra-arches.patch
 libzypp-17.31.18-boost-1.83.patch
 libzypp-17.31.18-clang.patch
 libzypp-workaround-threaded-libxml.patch
-libzypp-rpm6-is-not-rpm5.patch
 libzypp-17.37.18-linkage.patch
 
 %description
@@ -79,7 +78,6 @@ Development files (Headers etc.) for %{name}.
 
 %prep
 %autosetup -p1
-find . -name CMakeLists.txt -o -name "*.cmake" |xargs sed -i -e 's,CXX_STANDARD 20,CXX_STANDARD 17,g'
 
 %build
 %cmake \
@@ -89,6 +87,7 @@ find . -name CMakeLists.txt -o -name "*.cmake" |xargs sed -i -e 's,CXX_STANDARD 
 	-DENABLE_ZSTD_COMPRESSION:BOOL=ON \
 	-DEXPORT_NG_API:BOOL=ON \
 	-DDISABLE_MEDIABACKEND_TESTS:BOOL=ON \
+	-DZYPPCONFDIR=%{_sysconfdir} \
 	-G Ninja
 %ninja_build
 
@@ -106,6 +105,7 @@ ln -s ../yum.repos.d %{buildroot}/%{_sysconfdir}/zypp/repos.d
 %config %{_sysconfdir}/zypp/needreboot
 %config %{_sysconfdir}/zypp/systemCheck
 %config %{_sysconfdir}/zypp/zypp.conf
+%{_sysconfdir}/zypp/zypp.conf.README
 %{_sysconfdir}/zypp/repos.d
 %{_libexecdir}/zypp/zypp-rpm
 %{_datadir}/man/man5/*.5*
